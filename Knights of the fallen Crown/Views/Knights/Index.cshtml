@@ -1,0 +1,35 @@
+﻿@model IEnumerable<KnightsOfTheFallenCrown.Models.Knights.KnightsIndexViewModel>
+
+@{
+    int rowNumber = 1;
+}
+<div><a asp-action="Add" asp-controller="Knights" Type="Submit" class="btn btn-primary"> Go on a mission</a></div>
+
+
+<div class="h1"> Your Knights:</div>
+<form method="post">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Desctription</th>
+                <th scope="col">Heath</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var knight in Model)
+            {
+                <tr>
+                    <td>@rowNumber</td>
+                    <td>@knight.Name</td>
+                    <td>@knight.</td>
+                    <td>@knight.</td>
+                </tr>
+                rowNumber++;
+            }
+        </tbody>
+    </table>
+</form>
+
+
