@@ -1,4 +1,4 @@
-﻿using KnightsOfTheFallenCrown.Core.Domain;
+﻿using KnightsOfTheFallenCrown.Core.Dto;
 using KnightsOfTheFallenCrown.Core.ServicesInterface;
 using KnightsOfTheFallenCrown.Data;
 using KnightsOfTheFallenCrown.Models.Knights;
@@ -20,14 +20,14 @@ namespace KnightsOfTheFallenCrown.Controllers
 
         public IActionResult Index()
         {
-            var resultingInventory = _context.Knight
-            .OrderByDescending(y => y.Level)
+            var resultingInventory = _context.Knights
+            .OrderByDescending(y => y.KnightLevel)
             .Select(x => new KnightsIndexViewModel
             {
-                ID = x.ID,
-                Name = x.Name,
-                Level = x.Level,    
-                KnightType= (KnightTYPE)x.KnightType,
+                KnightID = x.ID,
+                KnightName = x.KnightName,
+                KnightLevel = x.KnightLevel,    
+                KnightType= (Models.Knights.KnightTYPE)(Core.Dto.KnightTYPE)x.KnightType,
             });
             return View(resultingInventory);
         }

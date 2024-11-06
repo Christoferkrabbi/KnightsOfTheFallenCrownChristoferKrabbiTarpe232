@@ -13,11 +13,11 @@
 
     public class KnightsIndexViewModel
     {
-        public Guid ID { get; set; }
-        public string Name { get; set; }
-        public string Description { get; set; }
-        public int Health { get; set; }
-        public int Level { get; set; }
+        public Guid KnightID { get; set; }
+        public string KnightName { get; set; }
+        public string KnightDescription { get; set; }
+        public int KnightHealth { get; set; }
+        public int KnightLevel { get; set; }
         public KnightTYPE KnightType { get; set; }
         public KnightPERK KnightPerk { get; set; }
 

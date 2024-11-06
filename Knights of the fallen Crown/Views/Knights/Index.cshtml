@@ -1,5 +1,6 @@
 ﻿@model IEnumerable<KnightsOfTheFallenCrown.Models.Knights.KnightsIndexViewModel>
 
+
 @{
     int rowNumber = 1;
 }
@@ -22,10 +23,14 @@
             {
                 <tr>
                     <td>@rowNumber</td>
-                    <td>@knight.Name</td>
+                    <td>@knight.KnightName</td>
                     <td>@knight.</td>
                     <td>@knight.</td>
+                  
+
                 </tr>
+
+
                 rowNumber++;
             }
         </tbody>

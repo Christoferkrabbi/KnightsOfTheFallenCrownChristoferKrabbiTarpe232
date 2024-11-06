@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace KnightsOfTheFallenCrown.Core.Domain
+namespace KnightsOfTheFallenCrown.Core.Dto
 {
     public class Lord
     {

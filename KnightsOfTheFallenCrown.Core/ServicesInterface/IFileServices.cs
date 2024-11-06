@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace KnightsOfTheFallenCrown.Core.ServicesInterface
 {
-    public interface IKnightsServices
+    public interface IFileservices
     {
-        Task<Knight>DetailsAsync (Guid id);
-        Task<Knight> Create(KnightDto dto);
+        void UploadFilesToDatabase(
+            KnightDto dto, Knight domain);
     }
 }

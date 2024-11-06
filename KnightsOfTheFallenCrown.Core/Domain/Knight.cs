@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace KnightsOfTheFallenCrown.Core.Domain
+namespace KnightsOfTheFallenCrown.Core.Dto
 {
     public enum KnightTYPE
     {
@@ -17,13 +17,13 @@ namespace KnightsOfTheFallenCrown.Core.Domain
 
 
 
-    public class Knights
+    public class Knight
     {
         public Guid ID { get; set; }
-        public string Name { get; set; }
-        public string Description { get; set; }
-        public int Health { get; set; }
-        public int Level { get; set; }
+        public string KnightName { get; set; }
+        public string KnightDescription { get; set; }
+        public int KnightHealth { get; set; }
+        public int KnightLevel { get; set; }
         public KnightTYPE KnightType { get; set; }
         public KnightPERK KnightPerk { get; set; }
 

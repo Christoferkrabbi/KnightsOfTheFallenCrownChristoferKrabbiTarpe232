@@ -1,10 +1,10 @@
-﻿using KnightsOfTheFallenCrown.Core.Domain;
+﻿using KnightsOfTheFallenCrown.Core.Dto;
 using Microsoft.EntityFrameworkCore;
 
 namespace KnightsOfTheFallenCrown.Data
 {
     public class KnightsOfTheFallenCrownContext
     {
-        public DbSet<Knights> Knight { get; set; }
+        public DbSet<Knight> Knights { get; set; }
     }
 }
