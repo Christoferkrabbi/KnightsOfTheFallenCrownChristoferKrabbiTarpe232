@@ -1,21 +1,18 @@
-﻿using KnightsOfTheFallenCrown.Core.ServicesInterface;
+﻿using KnightsOfTheFallenCrown.Core.Domain;
+using KnightsOfTheFallenCrown.Core.Dto;
+using KnightsOfTheFallenCrown.Core.ServicesInterface;
 using KnightsOfTheFallenCrown.Data;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Microsoft.Extensions.Hosting;
 
 namespace KnightsOfTheFallenCrown.ApplicationServices.Services
 {
-    public class FileServices : IFileServices
+    public class FileServices : IFileservices
     {
-        private readonly IHostEnvironment _ webHost;
+        private readonly IHostEnvironment _webHost;
         private readonly KnightsOfTheFallenCrownContext _context;
 
         public FileServices
-       ( 
+       (
            IHostEnvironment webHost,
             KnightsOfTheFallenCrownContext context
         )
@@ -23,37 +20,30 @@ namespace KnightsOfTheFallenCrown.ApplicationServices.Services
             _webHost = webHost;
             _context = context;
         }
-
         public void UploadFilesToDatabase(KnightDto dto, Knight domain)
         {
-            if(dto.Files != null && dto.Files.Count > 0)
-            { 
-                foreach(var image in dto.Files) 
+            if (dto.Files != null && dto.Files.Count > 0)
+            {
+                foreach (var image in dto.Files)
                 {
-                    using (var target = new MemoryStream()) 
-                    { 
-                        FileToDatabase files = null FileToDatabase()
+                    using (var target = new MemoryStream())
+                    {
+                        FileToDatabase files = new FileToDatabase()
                         {
-                            ID = Guid.NewGuid();
-                            ImageTitle = image.FileName;
-                            
+                            ID = Guid.NewGuid(),
+                            ImageTitle = image.FileName,
+                            TitanID = domain.ID
+                        };
 
+                        image.CopyTo(target);
+                        files.ImageData = target.ToArray();
+                        _context.FilesToDatabase.Add(files);
 
-                        }
-                    
                     }
                 }
             }
 
 
         }
-
-        public async Task<Knight> DetailsAsync(Guid id)
-        {
-            var result = await _context.Knights
-                .FirstOrDefaultAsync(x=>x.ID==id);
-            return result
-        }
- 
     }
 }

@@ -10,7 +10,6 @@ namespace KnightsOfTheFallenCrown.Core.ServicesInterface
 {
     public interface IFileservices
     {
-        void UploadFilesToDatabase(
-            KnightDto dto, Knight domain);
+        void UploadFilesToDatabase(KnightDto dto, Knight domain);
     }
 }

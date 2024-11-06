@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace KnightsOfTheFallenCrown.Core.Dto
 {
-    internal class KnightDto
+    public class KnightDto
     {
         public enum KnightTYPE
         {

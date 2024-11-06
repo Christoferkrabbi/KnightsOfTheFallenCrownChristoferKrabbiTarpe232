@@ -18,8 +18,13 @@
         public string KnightDescription { get; set; }
         public int KnightHealth { get; set; }
         public int KnightLevel { get; set; }
+        public int PrimaryAttackName { get; set; }
         public KnightTYPE KnightType { get; set; }
         public KnightPERK KnightPerk { get; set; }
+
+        //ainult Db
+        public DateTime CreatedAt { get; set; }
+        public DateTime UpdatedAt { get; set; }
 
     }
 }
