@@ -1,4 +1,6 @@
 ﻿
+
+using KnightsOfTheFallenCrown.Core.Domain;
 using KnightsOfTheFallenCrown.Core.Dto;
 using KnightsOfTheFallenCrown.Core.ServicesInterface;
 using KnightsOfTheFallenCrown.Data;
@@ -14,10 +16,12 @@ namespace KnightsOfTheFallenCrown.ApplicationServices.Services
     public class KnightsServices : IKnightsServices
     {
         private readonly KnightsOfTheFallenCrownContext _context;
+        private readonly IFileServices _fileServices;
 
-        public KnightsServices(KnightsOfTheFallenCrownContext context)
+        public KnightsServices(KnightsOfTheFallenCrownContext context, IFileServices fileServices)
         {
             _context=context;
+            _fileServices = fileServices;
         }
 
         public async Task<Knight>DetailsAsync(Guid id)
@@ -37,13 +41,20 @@ namespace KnightsOfTheFallenCrown.ApplicationServices.Services
             knight.KnightLevel = 0;
 
             //set by user
-            knight.KnightType = (Core.Domain.KnightType)dto.KnightType;
+            knight.KnightName = dto.KnightName;
+            
 
+
+            
             if(dto.Files != null)
             {
-                
-            }
+                _fileServices.UploadFilesToDatabase(dto, knight);
 
+            }
+            await _context.Knights.AddAsync(knight);
+            await _context.SaveChangesAsync();
+
+            return knight;
 
         }
     }

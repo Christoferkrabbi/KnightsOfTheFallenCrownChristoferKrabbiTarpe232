@@ -12,5 +12,6 @@ namespace KnightsOfTheFallenCrown.Core.ServicesInterface
     {
         Task<Knight>DetailsAsync (Guid id);
         Task<Knight> Create(KnightDto dto);
+        Task<Knight> update (KnightDto dto);
     }
 }

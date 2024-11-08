@@ -1,25 +1,8 @@
-﻿using Microsoft.AspNetCore.Http;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using KnightsOfTheFallenCrown.Core.Domain;
 
-namespace KnightsOfTheFallenCrown.Core.Domain { 
-    public enum KnightTYPE
-    {
-        Vanguard, Heavy, Hybrid, Assassin,
-    }
-    public enum KnightPERK
-    {
-        AttackBoost, DefenceBoost,
-    }
-    public enum KnightStatus
-    {
-        Dead, alive, OnGuard
-    }
-
-    public class Knight
+namespace KnightsOfTheFallenCrown.Models.Knights
+{
+    public class KnightDetailsViewModel
     {
         public Guid ID { get; set; }
         public string KnightName { get; set; }
@@ -32,6 +15,13 @@ namespace KnightsOfTheFallenCrown.Core.Domain {
 
         public KnightTYPE KnightType { get; set; }
         public KnightPERK KnightPerk { get; set; }
+
+
+
+        public List<IFormFile> Files { get; set; }
+        public IEnumerable<FileToDatabase> Image { get; set; } = new List<FileToDatabase>();
+
+
 
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }

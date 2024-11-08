@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace KnightsOfTheFallenCrown.Core.Dto
 {
-    internal class FileToDatabaseDto
+    public class FileToDatabaseDto
     {
         public Guid ID { get; set; }
         public string ImageTitle { get; set; }

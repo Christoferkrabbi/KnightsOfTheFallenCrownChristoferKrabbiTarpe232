@@ -6,7 +6,7 @@ using Microsoft.Extensions.Hosting;
 
 namespace KnightsOfTheFallenCrown.ApplicationServices.Services
 {
-    public class FileServices : IFileservices
+    public class FileServices : IFileServices
     {
         private readonly IHostEnvironment _webHost;
         private readonly KnightsOfTheFallenCrownContext _context;
@@ -32,7 +32,7 @@ namespace KnightsOfTheFallenCrown.ApplicationServices.Services
                         {
                             ID = Guid.NewGuid(),
                             ImageTitle = image.FileName,
-                            TitanID = domain.ID
+                            KnightID = domain.ID
                         };
 
                         image.CopyTo(target);
@@ -42,8 +42,8 @@ namespace KnightsOfTheFallenCrown.ApplicationServices.Services
                     }
                 }
             }
-
-
         }
     }
+
+   
 }

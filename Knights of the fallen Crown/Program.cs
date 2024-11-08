@@ -1,3 +1,5 @@
+using KnightsOfTheFallenCrown.ApplicationServices.Services;
+using KnightsOfTheFallenCrown.Core.ServicesInterface;
 using KnightsOfTheFallenCrown.Data;
 using Microsoft.EntityFrameworkCore;
 
@@ -5,6 +7,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddScoped<IKnightsServices, KnightsServices>();
+builder.Services.AddScoped<IFileServices, FileServices>();
 builder.Services.AddDbContext<KnightsOfTheFallenCrownContext>(
     Options => Options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 

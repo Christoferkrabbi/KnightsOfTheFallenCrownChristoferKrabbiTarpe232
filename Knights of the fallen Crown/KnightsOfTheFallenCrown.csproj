@@ -18,6 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\KnightsOfTheFallenCrown.ApplicationServices\KnightsOfTheFallenCrown.ApplicationServices.csproj" />
     <ProjectReference Include="..\KnightsOfTheFallenCrown.Data\KnightsOfTheFallenCrown.Data.csproj" />
   </ItemGroup>
 
