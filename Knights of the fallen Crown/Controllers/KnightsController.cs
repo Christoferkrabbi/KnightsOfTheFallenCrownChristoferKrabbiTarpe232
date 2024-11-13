@@ -12,12 +12,12 @@ namespace KnightsOfTheFallenCrown.Controllers
     public class KnightsController : Controller
     {
         private readonly KnightsOfTheFallenCrownContext _context;
-        private readonly IKnightsServices _KnightsServices;
+        private readonly IKnightsServices _knightsServices;
 
         public KnightsController(KnightsOfTheFallenCrownContext context, IKnightsServices knightsServices)
         {
             _context = context;
-            _KnightsServices = knightsServices;
+            _knightsServices = knightsServices;
         }
 
         [HttpGet]
@@ -68,7 +68,7 @@ namespace KnightsOfTheFallenCrown.Controllers
                     KnightID = x.KnightID,
                 }).ToArray()
             };
-            var result = await _KnightsServices.Create(dto);
+            var result = await _knightsServices.Create(dto);
 
             if (result == null)
             {
@@ -82,7 +82,7 @@ namespace KnightsOfTheFallenCrown.Controllers
         [HttpGet]
         public async Task<IActionResult> Details(Guid id /*, Guid ref*/)
         {
-            var knight = await _KnightsServices.DetailsAsync(id);
+            var knight = await _knightsServices.DetailsAsync(id);
 
             if (knight == null)
             {
@@ -108,18 +108,15 @@ namespace KnightsOfTheFallenCrown.Controllers
             vm.KnightLevel = knight.KnightLevel;
             vm.KnightType = (Models.Knights.KnightTYPE)knight.KnightType;
             vm.KnightStatus = (Models.Knights.KnightStatus)knight.KnightStatus;
-            vm.Image.AddRange(images);//<--FileToDatabase
+          //  vm.Image.AddRange(images);//<--FileToDatabase
 
             return View(vm);
         }
         [HttpGet]
         public async Task <IActionResult> Update(Guid id)
         {
-            if(id == null)
-                {
-                return NotFound();
-            }
-            var knight = await _KnightsServices.DetailsAsync(id);
+            if(id == null){return NotFound(); }
+            var knight = await _knightsServices.DetailsAsync(id);
             if(knight == null) { return NotFound(); }
             var images = await _context.FilesToDatabase
                 .Where(x=> x.KnightID == id)
@@ -143,6 +140,7 @@ namespace KnightsOfTheFallenCrown.Controllers
 
             return View("Update", vm);
         }
+
         [HttpPost]
         public async Task<IActionResult> Update(KnightCreateViewModel vm)
         {
@@ -171,8 +169,9 @@ namespace KnightsOfTheFallenCrown.Controllers
                 }).ToArray()
 
             };
-            var result = await IKnightsServices.Update(dto);
-            if(result= null)
+            var result = await _knightsServices.Update(dto);
+
+            if(result == null)
             {
                 return RedirectToAction("Index");
             }

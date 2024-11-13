@@ -57,5 +57,36 @@ namespace KnightsOfTheFallenCrown.ApplicationServices.Services
             return knight;
 
         }
+        public async Task<Knight> Update(KnightDto dto)
+        {
+            Knight knight = new Knight();
+
+            // set by service
+            knight.ID = dto.ID;
+            knight.KnightHealth = dto.KnightHealth;
+            knight.KnightXP = dto.KnightXP;
+            knight.KnightXPNextLevel = dto.KnightXPNextLevel;
+            knight.KnightLevel = dto.KnightLevel;
+            knight.KnightStatus = (Core.Domain.KnightStatus)dto.KnightStatus;
+           
+
+            //set by user
+            knight.KnightName = dto.KnightName;
+           // knight.KnightType = (Core.Domain.KnightType)dto.KnightType;
+
+            //set for db
+            knight.CreatedAt = dto.CreatedAt;
+            knight.UpdatedAt = DateTime.Now;
+
+            //files
+            if (dto.Files != null)
+            {
+                _fileServices.UploadFilesToDatabase(dto, knight);
+            }
+            _context.Knights.Update(knight);
+            await _context.SaveChangesAsync();
+
+            return knight;
+        }
     }
 }
