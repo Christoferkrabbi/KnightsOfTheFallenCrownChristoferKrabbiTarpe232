@@ -7,10 +7,6 @@ using System.Threading.Tasks;
 
 namespace KnightsOfTheFallenCrown.Core.Dto
 {
-   
-      
-
-
         public enum KnightTYPE
         {
             Vanguard, Heavy, Hybrid, Assassin,

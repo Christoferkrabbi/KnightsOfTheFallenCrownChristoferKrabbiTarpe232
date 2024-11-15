@@ -88,5 +88,14 @@ namespace KnightsOfTheFallenCrown.ApplicationServices.Services
 
             return knight;
         }
+        public async Task<Knight> Delete(Guid id)
+        {
+            var result = await _context.Knights
+                .FirstOrDefaultAsync(x => x.ID == id);
+            _context.Knights.Remove(result);
+            await _context.SaveChangesAsync();
+
+            return result;
+        }
     }
 }

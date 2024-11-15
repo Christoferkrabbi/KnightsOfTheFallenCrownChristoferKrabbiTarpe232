@@ -10,7 +10,7 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<IKnightsServices, KnightsServices>();
 builder.Services.AddScoped<IFileServices, FileServices>();
 builder.Services.AddDbContext<KnightsOfTheFallenCrownContext>(
-    Options => Options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+    options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 var app = builder.Build();
 

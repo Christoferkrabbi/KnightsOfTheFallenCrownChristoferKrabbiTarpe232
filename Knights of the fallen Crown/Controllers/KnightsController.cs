@@ -6,6 +6,8 @@ using KnightsOfTheFallenCrown.Models.Knights;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Identity.Client;
+using KnightsOfTheFallenCrown.ApplicationServices.Services;
+using KnightsOfTheFallenCrown.Core.Domain;
 
 namespace KnightsOfTheFallenCrown.Controllers
 {
@@ -13,11 +15,14 @@ namespace KnightsOfTheFallenCrown.Controllers
     {
         private readonly KnightsOfTheFallenCrownContext _context;
         private readonly IKnightsServices _knightsServices;
+        private readonly IFileServices _fileServices;
+
 
         public KnightsController(KnightsOfTheFallenCrownContext context, IKnightsServices knightsServices)
         {
             _context = context;
             _knightsServices = knightsServices;
+            _fileServices = _fileServices;
         }
 
         [HttpGet]
@@ -34,6 +39,7 @@ namespace KnightsOfTheFallenCrown.Controllers
             });
             return View(resultingInventory);          
         }
+
         [HttpGet]
         public IActionResult Create()
         {
@@ -76,9 +82,8 @@ namespace KnightsOfTheFallenCrown.Controllers
             }
 
             return RedirectToAction("Index", vm);
-
-
         }
+
         [HttpGet]
         public async Task<IActionResult> Details(Guid id /*, Guid ref*/)
         {
@@ -112,6 +117,7 @@ namespace KnightsOfTheFallenCrown.Controllers
 
             return View(vm);
         }
+
         [HttpGet]
         public async Task <IActionResult> Update(Guid id)
         {
@@ -177,6 +183,65 @@ namespace KnightsOfTheFallenCrown.Controllers
             }
             return RedirectToAction("index", vm);
         }
+
+        [HttpGet]
+        public async Task<IActionResult> Delete(Guid id)
+        {
+            if (id == null) { return NotFound(); }
+
+            var knight = await _knightsServices.DetailsAsync(id);
+
+            if (knight == null) { return NotFound(); };
+
+            var images = await _context.FilesToDatabase
+                .Where(x => x.KnightID == id)
+                .Select(y => new KnightImageViewModel
+                {
+                    KnightID = y.ID,
+                    ImageID = y.ID,
+                    ImageData = y.ImageData,
+                    ImageTitle = y.ImageTitle,
+                    Image = string.Format("data:image/gif;base64,{0}", Convert.ToBase64String(y.ImageData))
+                }).ToArrayAsync();
+            var vm = new KnightDeleteViewModel();
+
+            vm.ID = knight.ID;
+            vm.KnightName = knight.KnightName;
+            vm.KnightHealth = knight.KnightHealth;
+            vm.KnightXP = knight.KnightXP;
+            vm.KnightXPNextLevel = knight.KnightXPNextLevel;
+            vm.KnightLevel = knight.KnightLevel;
+            vm.KnightType = (Models.Knights.KnightTYPE)knight.KnightType;
+            vm.KnightStatus = (Models.Knights.KnightStatus)knight.KnightStatus;
+            vm.CreatedAt = knight.CreatedAt;
+            vm.UpdatedAt = DateTime.Now;
+            vm.Image.AddRange(images);
+
+            return View(vm);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> DeleteConfirmation(Guid id)
+        {
+            var knightToDelete = await _knightsServices.Delete(id);
+
+            if (knightToDelete == null) { return RedirectToAction("Index"); }
+
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> RemoveImage(Guid id)
+        {
+            var dto = new FileToDatabaseDto()
+            {
+                ID = id
+            };
+            var image = await _fileServices.RemoveImageFromDatabase(dto);
+            if (image == null) { return RedirectToAction("Index"); }
+            return RedirectToAction("Index");
+        }
     }
 }
+
 
