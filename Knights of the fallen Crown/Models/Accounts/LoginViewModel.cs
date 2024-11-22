@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Google.Apis.Admin.Directory.directory_v1.Data;
+using System.ComponentModel.DataAnnotations;
 
 namespace KnightsOfTheFallenCrown.Models.Accounts
 {
@@ -10,8 +11,8 @@ namespace KnightsOfTheFallenCrown.Models.Accounts
         [Required]
         [DataType(DataType.Password)]
         public string Password {  get; set; }
-        [Display(Name)]
+        [Display(Name = "Remembver this account?")]
         public bool RememberMe {  get; set; }
-        public string? ReturnUrl {  get; set; }
+        public string? ReturnURL {  get; set; }
     }
 }

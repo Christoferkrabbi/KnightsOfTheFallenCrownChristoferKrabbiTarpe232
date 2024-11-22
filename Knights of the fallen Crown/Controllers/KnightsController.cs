@@ -135,7 +135,7 @@ namespace KnightsOfTheFallenCrown.Controllers
                   Image = string.Format("data:image/gif;base64,{0}", Convert.ToBase64String(y.ImageData))
               }).ToArrayAsync();
             var vm = new KnightCreateViewModel();
-            vm.KnightID = knight.ID;
+            vm.ID = knight.ID;
             vm.KnightName = knight.KnightName;
             vm.KnightHealth = knight.KnightHealth;
             vm.KnightXP = knight.KnightXP;
@@ -152,7 +152,7 @@ namespace KnightsOfTheFallenCrown.Controllers
         {
             var dto = new KnightDto()
             {
-                ID = (Guid)vm.KnightID,
+                ID = (Guid)vm.ID,
                 KnightName = vm.KnightName,
                 KnightHealth = 100,
                 KnightXP = 0,
@@ -203,6 +203,7 @@ namespace KnightsOfTheFallenCrown.Controllers
                     ImageTitle = y.ImageTitle,
                     Image = string.Format("data:image/gif;base64,{0}", Convert.ToBase64String(y.ImageData))
                 }).ToArrayAsync();
+
             var vm = new KnightDeleteViewModel();
 
             vm.ID = knight.ID;
@@ -213,9 +214,14 @@ namespace KnightsOfTheFallenCrown.Controllers
             vm.KnightLevel = knight.KnightLevel;
             vm.KnightType = (Models.Knights.KnightTYPE)knight.KnightType;
             vm.KnightStatus = (Models.Knights.KnightStatus)knight.KnightStatus;
+            vm.PrimaryAttackName = knight.PrimaryAttackName;
+            vm.PrimaryAttackPower = knight.PrimaryAttackPower;
+            vm.SecondaryAttackName = knight.SecondaryAttackName;
+            vm.SecondaryAttackPower = knight.SecondaryAttackPower;
             vm.CreatedAt = knight.CreatedAt;
             vm.UpdatedAt = DateTime.Now;
             vm.Image.AddRange(images);
+
 
             return View(vm);
         }
@@ -231,11 +237,11 @@ namespace KnightsOfTheFallenCrown.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> RemoveImage(Guid id)
+        public async Task<IActionResult> RemoveImage(KnightImageViewModel vm)
         {
             var dto = new FileToDatabaseDto()
             {
-                ID = id
+                ID = vm.ImageID
             };
             var image = await _fileServices.RemoveImageFromDatabase(dto);
             if (image == null) { return RedirectToAction("Index"); }

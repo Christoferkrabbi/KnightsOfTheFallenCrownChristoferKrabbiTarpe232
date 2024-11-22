@@ -28,10 +28,18 @@ namespace KnightsOfTheFallenCrown.Core.Domain {
         public int KnightLevel { get; set; }
         public int KnightXP { get; set; }
         public int KnightXPNextLevel { get; set; }
-        public KnightStatus KnightStatus { get; set; }
 
+        public KnightStatus KnightStatus { get; set; }
         public KnightTYPE KnightType { get; set; }
         public KnightPERK KnightPerk { get; set; }
+
+        
+        public int PrimaryAttackName { get; set; }
+        public int PrimaryAttackPower{ get; set;}
+        public int SecondaryAttackName{ get; set;}
+        public int SecondaryAttackPower{ get; set;}
+        public DateTime KnightWasBorn {  get; set; }
+        public DateTime KnightHasDied {  get; set; }
 
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
