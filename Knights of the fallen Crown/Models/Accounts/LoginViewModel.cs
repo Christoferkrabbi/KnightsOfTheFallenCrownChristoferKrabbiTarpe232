@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace KnightsOfTheFallenCrown.Models.Accounts
 {
-    public class LoginViewMode
+    public class LoginViewModel
     {
         [Required]
         [EmailAddress]
