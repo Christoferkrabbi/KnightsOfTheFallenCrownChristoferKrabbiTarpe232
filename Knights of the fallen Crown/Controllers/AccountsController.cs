@@ -60,6 +60,48 @@ namespace KnightsOfTheFallenCrown.Controllers
         }
 
 
+        [HttpGet]
+        public async Task<IActionResult>ResetPasssword()
+        {
+            var user = await _userManager.GetUserAsync(User);
+            var token = await _userManager.GeneratePasswordResetTokenAsync(user);
+            if(token == null || user.Email == null)
+            {
+                ModelState.AddModelError(" ", "Invalid Password reset token");
+            }
+            // missing ....
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        public async Task<IActionResult> ResetPassword(ResetPasswordViewModel model)
+        {
+            if(ModelState.IsValid)
+            {
+                var user = await _userManager.FindByEmailAsync(model.Email);
+                if( user != null)
+                {
+                    var result = await _userManager.ResetPasswordAsync(user, model.Token, model.Password);
+                    if(result.Succeeded)
+                    {
+                        if(await _userManager.IsLockedOutAsync(user))
+                        {
+                            await _userManager.SetLockoutEndDateAsync(user))
+                        }
+                        await _signInManager.SignOutAsync();
+                        await _userManager.DeleteAsync(user);
+                        return RedirectToAction("ResetPasswordConfirmation", "Accounts");
+                    }
+                    foreach(var error in result.Errors)
+                    {
+                        ModelState.AddModelError(" ", Err)
+                    }
+
+                    // missing ....
+                }
+            }
+        }
+
 
         [HttpGet]
         public IActionResult Register()
