@@ -12,7 +12,7 @@ namespace KnightsOfTheFallenCrown.Core.ServicesInterface
     {
         Task<ApplicationUser> ConfirmEmail(string userId, string token);
         Task<ApplicationUser> Register(ApplicationUserDto dto);
-        public async Task<ApplicationUser> Login(LoginDto dto);
+        Task<ApplicationUser> Login(LoginDto dto);
 
     }
 }
