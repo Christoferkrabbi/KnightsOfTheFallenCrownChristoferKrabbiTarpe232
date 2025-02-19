@@ -2,16 +2,12 @@
 using KnightsOfTheFallenCrown.Core.Dto;
 using KnightsOfTheFallenCrown.Core.ServicesInterface;
 using KnightsOfTheFallenCrown.Data;
-using KnightsOfTheFallenCrown.Models.Knights;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Identity.Client;
-using KnightsOfTheFallenCrown.ApplicationServices.Services;
-using KnightsOfTheFallenCrown.Core.Domain;
 
 namespace KnightsOfTheFallenCrown.Controllers
 {
-    public class KnightsController : Controller
+	public class KnightsController : Controller
     {
         private readonly KnightsOfTheFallenCrownContext _context;
         private readonly IKnightsServices _knightsServices;
@@ -32,7 +28,7 @@ namespace KnightsOfTheFallenCrown.Controllers
             .OrderByDescending(y => y.KnightLevel)
             .Select(x => new KnightsIndexViewModel
             {
-                KnightID = x.ID,
+                ID = x.ID,
                 KnightName = x.KnightName,
                 KnightLevel = x.KnightLevel,    
                 KnightType= (Models.Knights.KnightTYPE)(Core.Dto.KnightTYPE)x.KnightType,
@@ -60,9 +56,13 @@ namespace KnightsOfTheFallenCrown.Controllers
                 KnightLevel = 0,
                 KnightType = (Core.Dto.KnightTYPE)vm.KnightType,
                 KnightStatus = (Core.Dto.KnightStatus)vm.KnightStatus,
-                KnightDescription = vm.KnightDescription,
-               
-                CreatedAt = DateTime.Now,
+				PrimaryAttackName = vm.PrimaryAttackName,
+				PrimaryAttackPower = vm.PrimaryAttackPower,
+				SecondaryAttackName = vm.SecondaryAttackName,
+				SecondaryAttackPower = vm.SecondaryAttackPower,
+
+
+				CreatedAt = DateTime.Now,
                 UpdatedAt = DateTime.Now,
                 Files = vm.Files,
                 Image = vm.Image
@@ -160,7 +160,7 @@ namespace KnightsOfTheFallenCrown.Controllers
                 KnightLevel = 0,
                 KnightType = (Core.Dto.KnightTYPE)vm.KnightType,
                 KnightStatus = (Core.Dto.KnightStatus)vm.KnightStatus,
-                KnightDescription = vm.KnightDescription,
+                
 
                 CreatedAt = DateTime.Now,
                 UpdatedAt = DateTime.Now,

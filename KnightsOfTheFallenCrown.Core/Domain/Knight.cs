@@ -16,14 +16,14 @@ namespace KnightsOfTheFallenCrown.Core.Domain {
     }
     public enum KnightStatus
     {
-        Dead, alive, OnGuard
+		Alive, Dead, OnGuard
     }
 
     public class Knight
     {
         public Guid ID { get; set; }
         public string KnightName { get; set; }
-        public string KnightDescription { get; set; }
+        public string? KnightDescription { get; set; }
         public int KnightHealth { get; set; }
         public int KnightLevel { get; set; }
         public int KnightXP { get; set; }
