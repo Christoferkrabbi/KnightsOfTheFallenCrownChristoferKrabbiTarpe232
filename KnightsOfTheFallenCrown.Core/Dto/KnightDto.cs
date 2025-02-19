@@ -17,8 +17,8 @@ namespace KnightsOfTheFallenCrown.Core.Dto
         }
         public enum KnightStatus
         {
-            Dead, alive, OnGuard
-        }
+		Alive, Dead, OnGuard
+	}
 
         public class KnightDto
         {
@@ -27,7 +27,8 @@ namespace KnightsOfTheFallenCrown.Core.Dto
 
         public Guid ID { get; set; }
         public string KnightName { get; set; }
-        public string KnightDescription { get; set; }
+        public string? KnightDescription { get; set; }
+
         public int KnightHealth { get; set; }
         public int KnightLevel { get; set; }
         public int KnightXP { get; set; }
@@ -38,10 +39,10 @@ namespace KnightsOfTheFallenCrown.Core.Dto
         public KnightPERK KnightPerk { get; set; }
 
 
-        public int PrimaryAttackName { get; set; }
+        public string PrimaryAttackName { get; set; }
         public int PrimaryAttackPower { get; set; }
-        public int SecondaryAttackName { get; set; }
-        public int PSecondaryAttackPower { get; set; }
+        public string SecondaryAttackName { get; set; }
+        public int SecondaryAttackPower { get; set; }
         public DateTime KnightWasBorn { get; set; }
         public DateTime KnightHasDied { get; set; }
 

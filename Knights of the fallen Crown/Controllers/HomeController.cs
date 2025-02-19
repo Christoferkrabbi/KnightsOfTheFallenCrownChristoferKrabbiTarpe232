@@ -2,7 +2,7 @@ using KnightsOfTheFallenCrown.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
-namespace Knights_of_the_fallen_Crown.Controllers
+namespace KnightsOfTheFallenCrown.Controllers
 {
     public class HomeController : Controller
     {

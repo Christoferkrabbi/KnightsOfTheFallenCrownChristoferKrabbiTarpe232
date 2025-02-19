@@ -19,13 +19,16 @@ namespace KnightsOfTheFallenCrown.Models.Knights
 
     public class KnightsIndexViewModel
     {
-        public Guid KnightID { get; set; }
+        public Guid ID { get; set; }
         public string KnightName { get; set; }
         public string KnightDescription { get; set; }
         public int KnightHealth { get; set; }
         public int KnightLevel { get; set; }
-        public int PrimaryAttack { get; set; }
-        public KnightTYPE KnightType { get; set; }
+		public string PrimaryAttackName { get; set; }
+		public int PrimaryAttackPower { get; set; }
+		public string SecondaryAttackName { get; set; }
+		public int SecondaryAttackPower { get; set; }
+		public KnightTYPE KnightType { get; set; }
         public KnightPERK KnightPerk { get; set; }
         public KnightStatus KnightStatus { get; set; }
 
