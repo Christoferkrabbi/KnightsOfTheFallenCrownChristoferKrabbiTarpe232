@@ -1,9 +1,8 @@
-﻿using Google.Apis.Admin.Directory.directory_v1.Data;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace KnightsOfTheFallenCrown.Models.Accounts
 {
-    public class LoginViewModel
+	public class LoginViewModel
     {
 		[Required]
 		[EmailAddress]

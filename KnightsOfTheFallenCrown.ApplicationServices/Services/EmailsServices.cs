@@ -3,15 +3,9 @@ using KnightsOfTheFallenCrown.Core.ServicesInterface;
 using MailKit.Net.Smtp;
 using Microsoft.Extensions.Configuration;
 using MimeKit;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Mail;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace KnightsOfTheFallenCrown.ApplicationServices.Services
-	{
+{
 	public class EmailsServices : IEmailsServices
 	{
 		private readonly IConfiguration _configuration;
