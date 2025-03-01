@@ -8,11 +8,13 @@ using System.Threading.Tasks;
 
 namespace KnightsOfTheFallenCrown.Core.ServicesInterface
 {
-    public interface IAccountsServices
-    {
-        Task<ApplicationUser> ConfirmEmail(string userId, string token);
-        Task<ApplicationUser> Register(ApplicationUserDto dto);
-        Task<ApplicationUser> Login(LoginDto dto);
-
-    }
+	public interface IAccountsServices
+	{
+		public interface IAccountsServices
+		{
+			Task<ApplicationUser> ConfirmEmail(string userId, string token);
+			Task<ApplicationUser> Register(ApplicationUserDto dto);
+			Task<ApplicationUser> Login(LoginDto dto);
+		}
+	}
 }
