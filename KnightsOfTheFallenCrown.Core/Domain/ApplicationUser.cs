@@ -12,3 +12,4 @@ namespace KnightsOfTheFallenCrown.Core.Domain
         public string City { get; set; }
     }
 }
+  
