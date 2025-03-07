@@ -163,7 +163,7 @@ namespace KnightsOfTheFallenCrown.Controllers
 			vm.BattlefieldDescription = battlefieldToBeUpdated.BattlefieldDescription;
 			vm.Settlements = battlefieldToBeUpdated.Settlements;
 			vm.TechnicalLevel = battlefieldToBeUpdated.TechnicalLevel;
-			vm.LordWhoDominatesThisBattlefield = battlefieldToBeUpdated.LordWhoDominatesThisBattlefield;
+			//vm.LordWhoDominatesThisBattlefield = battlefieldToBeUpdated.LordWhoDominatesThisBattlefield;
 			vm.ContinentID = battlefieldToBeUpdated.ContinentID;
 			vm.CreatedAt = battlefieldToBeUpdated.CreatedAt;
 			vm.ModifiedAt = battlefieldToBeUpdated.ModifiedAt;

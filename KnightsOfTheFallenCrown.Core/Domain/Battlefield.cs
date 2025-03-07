@@ -40,7 +40,7 @@ namespace KnightsOfTheFallenCrown.Core.Domain
 		public string BattlefieldDescription {  get; set; }
 		public int Settlements { get; set; }
 		public KardashevScale TechnicalLevel { get; set; }
-		public Lord? LordWhoDominatesThisBattlefield { get; set; }
+	//	public Lord? LordWhoDominatesThisBattlefield { get; set; }
 		public Guid? ContinentID { get; set; }
 
 		public DateTime CreatedAt { get; set; }

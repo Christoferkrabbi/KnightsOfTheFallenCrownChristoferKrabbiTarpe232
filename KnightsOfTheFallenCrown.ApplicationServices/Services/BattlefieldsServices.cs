@@ -84,7 +84,7 @@ namespace KnightsOfTheFallenCrown.ApplicationServices.Services
 			BattlefieldChanged.BattlefieldDescription = dto.BattlefieldDescription;
 			BattlefieldChanged.Settlements = dto.Settlements;
 			BattlefieldChanged.TechnicalLevel = dto.TechnicalLevel;
-			BattlefieldChanged.LordWhoDominatesThisBattlefield = dto.LordWhoDominatesThisBattlefield;
+			//BattlefieldChanged.LordWhoDominatesThisBattlefield = dto.LordWhoDominatesThisBattlefield;
 			BattlefieldChanged.ContinentID = dto.ContinentID;
 			BattlefieldChanged.CreatedAt = dto.CreatedAt;
 			BattlefieldChanged.ModifiedAt = DateTime.Now;
