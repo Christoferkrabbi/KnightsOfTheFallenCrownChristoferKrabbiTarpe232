@@ -26,7 +26,7 @@ namespace KnightsOfTheFallenCrown.Core.Domain
 	{
 		public Guid ID { get; set; }
 		public string KnightName { get; set; }
-		public string KnightDescription { get; set; }
+		public string? KnightDescription { get; set; }
 		public int KnightHealth { get; set; }
 		public int KnightLevel { get; set; }
 		public int KnightXP { get; set; }

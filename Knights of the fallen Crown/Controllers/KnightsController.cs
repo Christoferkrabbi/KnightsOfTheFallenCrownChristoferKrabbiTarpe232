@@ -14,11 +14,11 @@ namespace KnightsOfTheFallenCrown.Controllers
         private readonly IFileServices _fileServices;
 
 
-        public KnightsController(KnightsOfTheFallenCrownContext context, IKnightsServices knightsServices)
+        public KnightsController(KnightsOfTheFallenCrownContext context, IKnightsServices knightsServices, IFileServices fileServices)
         {
             _context = context;
             _knightsServices = knightsServices;
-            _fileServices = _fileServices;
+            _fileServices = fileServices;
         }
 
         [HttpGet]

@@ -29,7 +29,7 @@ namespace KnightsOfTheFallenCrown.Core.Dto
 
 		public Guid ID { get; set; }
 		public string KnightName { get; set; }
-		public string KnightDescription { get; set; }
+		public string? KnightDescription { get; set; }
 		public int KnightHealth { get; set; }
 		public int KnightLevel { get; set; }
 		public int KnightXP { get; set; }
@@ -50,8 +50,8 @@ namespace KnightsOfTheFallenCrown.Core.Dto
 
 
 
-		public List<IFormFile> Files { get; set; }
-		public IEnumerable<FileToDatabaseDto> Image { get; set; } = new List<FileToDatabaseDto>();
+		public List<IFormFile>? Files { get; set; }
+		public IEnumerable<FileToDatabaseDto>? Image { get; set; } = new List<FileToDatabaseDto>();
 
 
 		public DateTime CreatedAt { get; set; }

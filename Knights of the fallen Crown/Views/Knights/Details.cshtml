@@ -4,6 +4,7 @@
 <h1> @Html.DisplayFor(model => model.KnightName) </h1>
 
 <div>
+    
     <hr />
     <dl class="row">
         <div class="form-group row">
@@ -13,6 +14,10 @@
         <div class="form-group row">
             <label asp-for="KnightName" class="col-sm-2 col-form-label"></label>
             @Html.DisplayFor(model => model.KnightName)
+        </div>
+        <div class="form-group row">
+            <label asp-for="KnightType" class="col-sm-2 col-form-label"></label>
+            @Html.DisplayFor(Model => Model.KnightType)
         </div>
         <div id="imagediv">
             @foreach (var image in Model.Image)
@@ -39,10 +44,7 @@
             @Html.DisplayFor(model => model.KnightXPNextLevel)
         </div>
 
-        <div class="form-group row">
-            <label asp-for="KnightXPNextLevel" class="col-sm-2 col-form-label"></label>
-            @Html.DisplayFor(model => model.KnightXPNextLevel)
-        </div>
+        
 
         <div class="form-group row">
             <label asp-for="KnightStatus" class="col-sm-2 col-form-label"></label>
