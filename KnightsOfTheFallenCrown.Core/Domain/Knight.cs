@@ -16,7 +16,7 @@ namespace KnightsOfTheFallenCrown.Core.Domain {
     }
     public enum KnightStatus
     {
-        Dead, alive, OnGuard
+        Dead, Alive, OnGuard
     }
 
     public class Knight
