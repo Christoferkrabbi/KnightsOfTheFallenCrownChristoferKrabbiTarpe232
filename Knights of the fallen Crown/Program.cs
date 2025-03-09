@@ -12,6 +12,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<IKnightsServices, KnightsServices>();
 builder.Services.AddScoped<IFileServices, FileServices>();
+builder.Services.AddScoped<IEmailsServices, EmailsServices>();
+builder.Services.AddScoped<IAccountsServices, AccountsServices>();
 builder.Services.AddDbContext<KnightsOfTheFallenCrownContext>(
    options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>

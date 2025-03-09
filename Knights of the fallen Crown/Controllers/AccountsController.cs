@@ -1,11 +1,12 @@
-﻿
-using KnightsOfTheFallenCrown.Models.Accounts;
-using KnightsOfTheFallenCrown.Core.Domain;
+﻿using KnightsOfTheFallenCrown.Core.Domain;
+using KnightsOfTheFallenCrown.Core.Dto;
+using KnightsOfTheFallenCrown.Core.ServicesInterface;
 using KnightsOfTheFallenCrown.Data;
+using KnightsOfTheFallenCrown.Models;
+using KnightsOfTheFallenCrown.Models.Accounts;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using KnightsOfTheFallenCrown.Models;
 using System.Diagnostics;
 
 namespace KnightsOfTheFallenCrown.Controllers
@@ -15,17 +16,20 @@ namespace KnightsOfTheFallenCrown.Controllers
 		private readonly UserManager<ApplicationUser> _userManager;
 		private readonly SignInManager<ApplicationUser> _signInManager;
 		private readonly KnightsOfTheFallenCrownContext _context;
+		private readonly IEmailsServices _emailsServices;
 
 		public AccountsController
 			(
 			UserManager<ApplicationUser> userManager,
 			SignInManager<ApplicationUser> signInManager,
-			KnightsOfTheFallenCrownContext context
+			KnightsOfTheFallenCrownContext context,
+			IEmailsServices emailsServices
 			)
 		{
 			_userManager = userManager;
 			_signInManager = signInManager;
 			_context = context;
+			_emailsServices = emailsServices;
 		}
 		[HttpGet]
 		public async Task<IActionResult> AddPassword()
@@ -204,6 +208,14 @@ namespace KnightsOfTheFallenCrown.Controllers
 					var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
 
 					var confirmationLink = Url.Action("ConfirmEmail", "Accounts", new { userId = user.Id, token = token }, Request.Scheme);
+
+					EmailTokenDto newsignup = new();
+					newsignup.Token = token;
+					newsignup.Body = $"Thank you for signing up, klikka här:  {confirmationLink}";
+					newsignup.Subject = "KnightsOfTheFallenCrown Register";
+					newsignup.To = user.Email;
+
+					_emailsServices.SendEmailToken(newsignup, token);
 					if (_signInManager.IsSignedIn(User) && User.IsInRole("Admin"))
 					{
 						return RedirectToAction("ListUsers", "Administrations");
@@ -233,6 +245,7 @@ namespace KnightsOfTheFallenCrown.Controllers
 
 		[HttpGet]
 		[AllowAnonymous]
+		[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
 		public async Task<IActionResult> ConfirmEmail(string userId, string token)
 		{
 			if (userId == null || token == null) { return RedirectToAction("Index", "Home"); }
@@ -243,13 +256,33 @@ namespace KnightsOfTheFallenCrown.Controllers
 				return View("NotFound");
 			}
 			var result = await _userManager.ConfirmEmailAsync(user, token);
+			List<string> errordatas =
+						[
+						"Area", "Accounts",
+						"Issue", "Failure",
+						"StatusMessage", "Confirmation Failure",
+						"ActedOn", $"{user.Email}",
+						"CreatedAccountData", $"{user.Email}\n{user.City}\n[password hidden]\n[password hidden]"
+						];
 			if (result.Succeeded)
 			{
+				errordatas =
+						[
+						"Area", "Accounts",
+						"Issue", "Success",
+						"StatusMessage", "Confirmation Success",
+						"ActedOn", $"{user.Email}",
+						"CreatedAccountData", $"{user.Email}\n{user.City}\n[password hidden]\n[password hidden]"
+						];
+				ViewBag.ErrorDatas = errordatas;
 				return View();
+
 			}
+
+			ViewBag.ErrorDatas = errordatas;
 			ViewBag.ErrorTitle = "Email cannot be confirmed";
 			ViewBag.ErrorMessage = $"The users email, with userid of {userId}, cannot be confirmed.";
-			return View("Error");
+			return View("Error", new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
 		}
 
 		// user login & logout methods
