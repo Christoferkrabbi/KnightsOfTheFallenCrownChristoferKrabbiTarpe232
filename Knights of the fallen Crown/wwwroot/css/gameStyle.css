@@ -1,0 +1,27 @@
+﻿
+@font-face {
+    font-family: 'Canterbury';
+    src: url('lib/gameasset/Font/CanterburyRegular.ttf') format('truetype'); 
+}
+
+body{
+    font-family: 'Canterbury';
+}
+
+.medievalTitleFontOnly {
+    font-family: 'Canterbury';
+}
+
+.medievalBackground {
+   /* background-color: #5C4033;*/
+    /*background-image: url('lib/gameasset/Image/Site/Medieval-Background.jpg');*/
+}
+
+.galacticGradient {
+    /*background-color: -webkit-linear-gradient(rgb(252, 255, 77), rgb(77, 237, 255)) !important;*/
+    background-image: linear-gradient(rgb(252, 255, 77), rgb(77, 237, 255)) !important;
+}
+
+.medievalHeaderBackground{
+    /*background-color: saddlebrown;*/
+}
