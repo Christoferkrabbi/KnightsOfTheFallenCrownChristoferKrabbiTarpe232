@@ -1,20 +1,41 @@
 ﻿
 @font-face {
     font-family: 'Canterbury';
-    src: url('lib/gameasset/Font/CanterburyRegular.ttf') format('truetype'); 
+    src: url('../lib/gameasset/fonts/Canterbury.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+
+    font-family: 'BeyondWonderLand';
+    src: url('../lib/gameasset/fonts/Beyond Wonderland.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal; 
+    
+    font-family: 'BlackChancery';
+    src: url('../lib/gameasset/fonts/BLKCHCRY.TTF') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+
 }
 
-body{
-    font-family: 'Canterbury';
+body {
+    font-family: BlackChancery
 }
 
 .medievalTitleFontOnly {
-    font-family: 'Canterbury';
+    font-family: BlackChancery;
+    font-size: 42px; /* Adjust size */
+    color: gold; /* Optional for a medieval look */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .medievalBackground {
-   /* background-color: #5C4033;*/
-    /*background-image: url('lib/gameasset/Image/Site/Medieval-Background.jpg');*/
+    /* background-color: #5C4033;*/
+    background-image: url('~/lib/gameasset/Image/Site/Medieval-Background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    /*font-family: 'Canterbury', serif;*/
 }
 
 .galacticGradient {
