@@ -10,7 +10,9 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddScoped<IBattlefieldsServices, BattlefieldsServices>();
 builder.Services.AddScoped<IKnightsServices, KnightsServices>();
+
 builder.Services.AddScoped<IFileServices, FileServices>();
 builder.Services.AddScoped<IEmailsServices, EmailsServices>();
 builder.Services.AddScoped<IAccountsServices, AccountsServices>();
