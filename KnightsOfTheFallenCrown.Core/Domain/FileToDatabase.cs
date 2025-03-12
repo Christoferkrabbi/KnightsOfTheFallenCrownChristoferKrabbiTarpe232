@@ -12,5 +12,6 @@ namespace KnightsOfTheFallenCrown.Core.Domain
         public string ImageTitle { get; set; }
         public byte[] ImageData { get; set; }
         public Guid? KnightID { get; set; }
+        public Guid? BattlefieldID { get; set; }
     }
 }
