@@ -15,8 +15,9 @@
         public int SecondaryAttackPower { get; set; }
         public string SecondaryAttackName { get; set; }
 
-        //public List<IFormFile> Files { get; set; }
+        public List<IFormFile> Files { get; set; }
         public List<KnightImageViewModel> Image { get; set; } = new List<KnightImageViewModel>();
+
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
     }

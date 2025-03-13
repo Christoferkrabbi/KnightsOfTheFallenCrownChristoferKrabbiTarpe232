@@ -28,7 +28,7 @@
 
 .medievalBackground {
     /* background-color: #5C4033;*/
-    background-image: url('~/lib/gameasset/Image/Site/Medieval-Background.jpg');
+    background-image: url('~/lib/gameasset/Image/Site/MedievalBackground.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -44,3 +44,11 @@
 .medievalHeaderBackground{
     /*background-color: saddlebrown;*/
 }
+
+.gTB {
+    background-color: #5C4033;
+
+body{
+    background-color: #966919
+}
+    

@@ -32,8 +32,12 @@ namespace KnightsOfTheFallenCrown.Models.Knights
         public KnightPERK KnightPerk { get; set; }
         public KnightStatus KnightStatus { get; set; }
 
-        //ainult Db
-        public DateTime CreatedAt { get; set; }
+		public List<IFormFile>? Files { get; set; }
+		public List<KnightImageViewModel>? Image { get; set; } = new List<KnightImageViewModel>();
+
+
+		//ainult Db
+		public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
 
     }

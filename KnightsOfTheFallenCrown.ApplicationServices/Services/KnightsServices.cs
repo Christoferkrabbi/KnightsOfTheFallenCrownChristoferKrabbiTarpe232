@@ -88,7 +88,12 @@ namespace KnightsOfTheFallenCrown.ApplicationServices.Services
 
             //set by user
             knight.KnightName = dto.KnightName;
-           // knight.KnightType = (Core.Domain.KnightType)dto.KnightType;
+            knight.KnightType = (Core.Domain.KnightTYPE)dto.KnightType;
+            knight.PrimaryAttackName = dto.PrimaryAttackName;
+            knight.PrimaryAttackPower = dto.PrimaryAttackPower;
+            knight.SecondaryAttackName = dto.SecondaryAttackName;
+            knight.SecondaryAttackPower = dto.SecondaryAttackPower;
+
 
             //set for db
             knight.CreatedAt = dto.CreatedAt;

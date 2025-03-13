@@ -43,15 +43,10 @@
             <label asp-for="KnightXPNextLevel" class="col-sm-2 col-form-label"></label>
             @Html.DisplayFor(model => model.KnightXPNextLevel)
         </div>
-
-        
-
         <div class="form-group row">
             <label asp-for="KnightStatus" class="col-sm-2 col-form-label"></label>
             @Html.DisplayFor(model => model.KnightStatus)
         </div>
-
-
 
         <div class="form-group row">
             <label asp-for="PrimaryAttackName" class="col-sm-2 col-form-label"></label>
@@ -68,6 +63,12 @@
         <div>
             <label asp-for="SecondaryAttackPower" class="col-sm-2 col-form-label"></label>
             @Html.DisplayFor(model => model.SecondaryAttackPower)
+        </div>
+        <div id="imagediv">
+            @foreach (var image in Model.Image)
+            {
+                <partial name="_Images" model="image" />
+            }
         </div>
 
 

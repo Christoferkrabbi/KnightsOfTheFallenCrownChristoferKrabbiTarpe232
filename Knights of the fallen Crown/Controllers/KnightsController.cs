@@ -32,9 +32,13 @@ namespace KnightsOfTheFallenCrown.Controllers
                 KnightName = x.KnightName,
                 KnightLevel = x.KnightLevel,    
                 KnightType= (Models.Knights.KnightTYPE)(Core.Dto.KnightTYPE)x.KnightType,
+
             });
-            return View(resultingInventory);          
+            return View(resultingInventory);   
+
+            
         }
+
 
         [HttpGet]
         public IActionResult Create()
@@ -102,8 +106,8 @@ namespace KnightsOfTheFallenCrown.Controllers
                     ImageID = y.ID,
                     ImageData = y.ImageData,
                     ImageTitle = y.ImageTitle,
-                    Image = string.Format("data:image/gif;base64,{0}", Convert.ToBase64String(y.ImageData))
-                }).ToArrayAsync();
+					Image = string.Format("data:image/gif;base64,{0}", Convert.ToBase64String(y.ImageData))
+				}).ToArrayAsync();
 
             var vm = new KnightDetailsViewModel();
             vm.ID = knight.ID;
@@ -113,9 +117,14 @@ namespace KnightsOfTheFallenCrown.Controllers
             vm.KnightLevel = knight.KnightLevel;
             vm.KnightType = (Models.Knights.KnightTYPE)knight.KnightType;
             vm.KnightStatus = (Models.Knights.KnightStatus)knight.KnightStatus;
-          //  vm.Image.AddRange(images);//<--FileToDatabase
+			//  vm.Image.AddRange(images);//<--FileToDatabase
+			vm.PrimaryAttackName = knight.PrimaryAttackName;
+			vm.PrimaryAttackPower = knight.PrimaryAttackPower;
+			vm.SecondaryAttackName = knight.SecondaryAttackName;
+			vm.SecondaryAttackPower = knight.SecondaryAttackPower;
 
-            return View(vm);
+
+			return View(vm);
         }
 
         [HttpGet]
@@ -132,8 +141,8 @@ namespace KnightsOfTheFallenCrown.Controllers
                   ImageID = y.ID,
                   ImageData = y.ImageData,
                   ImageTitle = y.ImageTitle,
-                  Image = string.Format("data:image/gif;base64,{0}", Convert.ToBase64String(y.ImageData))
-              }).ToArrayAsync();
+				  Image = string.Format("data:image/gif;base64,{0}", Convert.ToBase64String(y.ImageData))
+			  }).ToArrayAsync();
             var vm = new KnightCreateViewModel();
             vm.ID = knight.ID;
             vm.KnightName = knight.KnightName;
@@ -143,8 +152,12 @@ namespace KnightsOfTheFallenCrown.Controllers
             vm.KnightType = (Models.Knights.KnightTYPE)knight.KnightType;
             vm.KnightStatus = (Models.Knights.KnightStatus)knight.KnightStatus;
             vm.Image.AddRange(images);
+			vm.PrimaryAttackName = knight.PrimaryAttackName;
+			vm.PrimaryAttackPower = knight.PrimaryAttackPower;
+			vm.SecondaryAttackName = knight.SecondaryAttackName;
+			vm.SecondaryAttackPower = knight.SecondaryAttackPower;
 
-            return View("Update", vm);
+			return View("Update", vm);
         }
 
         [HttpPost]
@@ -160,6 +173,11 @@ namespace KnightsOfTheFallenCrown.Controllers
                 KnightLevel = 0,
                 KnightType = (Core.Dto.KnightTYPE)vm.KnightType,
                 KnightStatus = (Core.Dto.KnightStatus)vm.KnightStatus,
+                PrimaryAttackName = vm.PrimaryAttackName,
+                PrimaryAttackPower = vm.PrimaryAttackPower,
+                SecondaryAttackName = vm.SecondaryAttackName,
+                SecondaryAttackPower = vm.SecondaryAttackPower,
+
                 
 
                 CreatedAt = DateTime.Now,

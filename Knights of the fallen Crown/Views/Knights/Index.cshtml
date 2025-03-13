@@ -66,23 +66,25 @@
             }
             else
             {
-                @foreach (var knight in Model)
+               @foreach (var knight in Model)
                 {
                 <td>
                     <table class="gTB">
                         <tr class="gTZRG"><td colspan="2">@knight.KnightName</td></tr>
-                        <tr class="gTZRG"><td colspan="2"><img width="256" src="~/lib/gameasset/Image/premadeknights/Fh_hero-character-warden_ncsa.png" /></td></tr>
+                       
+
+                        <tr class="gTZRG"><td colspan="2"><img width="256" src="~/lib/gameasset/Image/premadeknights/KnightIcon.png" /></td></tr>
                         <tr class="gTZRG"><td>@knight.KnightType</td>
                             <td>@knight.KnightLevel</td></tr>
                         <tr class="gTZRG"><td colspan="2">XPBAROBJECT</td></tr>
                     </table>
                 </td>
                 <td>
-                        <a asp-action="details" asp-controller="knights" asp-route-id="@knight.ID" class="btn btn-info">KnightDetails</a>
+                        <a asp-action="details" asp-controller="knights" asp-route-id="@knight.ID" class="btn btn-info">Knight Details</a>
                         <br />
-                        <a asp-action="update" asp-controller="knights" asp-route-id="@knight.ID" class="btn btn-info">KnightConfigure</a>
+                        <a asp-action="update" asp-controller="knights" asp-route-id="@knight.ID" class="btn btn-info">Modify this knight</a>
                         <br />
-                        <a asp-action="delete" asp-controller="knights" asp-route-id="@knight.ID" class="btn btn-info">KnightDelete</a>
+                        <a asp-action="delete" asp-controller="knights" asp-route-id="@knight.ID" class="btn btn-info">Delete this knight</a>
                 </td>
                     rowNumber++;
                 } 
