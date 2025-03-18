@@ -24,8 +24,8 @@ namespace KnightsOfTheFallenCrown.Models.Knights
         public DateTime KnightWasBorn { get; set; }
         public DateTime KnightHasDied { get; set; }
 
-        public List<IFormFile>? Files { get; set; }
-        public List<KnightImageViewModel>? Image { get; set; } = new List<KnightImageViewModel>();
+        public List<IFormFile> Files { get; set; }
+        public List<KnightImageViewModel> Image { get; set; } = new List<KnightImageViewModel>();
 
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }

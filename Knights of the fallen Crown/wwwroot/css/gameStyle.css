@@ -1,27 +1,43 @@
 ﻿
 @font-face {
-    font-family: 'Canterbury';
-    src: url('../lib/gameasset/fonts/Canterbury.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-
+   
     font-family: 'BeyondWonderLand';
     src: url('../lib/gameasset/fonts/Beyond Wonderland.ttf') format('truetype');
     font-weight: normal;
     font-style: normal; 
     
+  
+
+    font-family: 'Canterbury';
+    src: url('../lib/gameasset/fonts/Canterbury.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;  
+    
     font-family: 'BlackChancery';
     src: url('../lib/gameasset/fonts/BLKCHCRY.TTF') format('truetype');
     font-weight: normal;
-    font-style: normal;
-
+    font-style: normal; 
 }
 
 
 
 .medievalTitleFontOnly {
-    font-family: BlackChancery;
+    font-family: BlackChancery; 
     font-size: 42px; /* Adjust size */
+    color: gold; /* Optional for a medieval look */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.medievalSecondaryTitleFontOnly {
+    font-family: BlackChancery; 
+    font-size: 27px; /* Adjust size */
+    color: gold; /* Optional for a medieval look */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.medievalFontOnly {
+    font-family: BlackChancery;
+    font-size: 25px;
     color: gold; /* Optional for a medieval look */
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
@@ -41,14 +57,52 @@
     background-image: linear-gradient(rgb(252, 255, 77), rgb(77, 237, 255)) !important;
 }
 
-.medievalHeaderBackground{
-    /*background-color: saddlebrown;*/
+.medievalHeaderBackground {
+    background-color: #7B3F00;
+    /*color: #966919;*/
+    color: gold;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    font-family: BlackChancery;
+    font-size: 23px;
+   
 }
-
-.gTB {
-    background-color: #5C4033;
 
 body{
-    background-color: #966919
-}
+    /*background-color: #966919*/
+    background-color: saddlebrown;
+    color: gold;
     
+}
+
+.yellow {
+    color: gold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    font-family: BlackChancery;
+    font-size: 14px;
+}
+
+.Table, .Tb {
+    border: 5px solid;
+    /*border-color: saddlebrown*/
+    /*border-color: #966919*/
+    border-color: goldenrod;
+    /*background-color: #5C4033;*/
+    background-color: #7B3F00;
+    font-family: BlackChancery;
+    font-size: 20px
+}
+.imageBorder {
+    border: 2px solid;
+    /*border-color: saddlebrown*/
+    /*border-color: #966919*/
+    border-color: goldenrod;
+}
+
+.medievalButton {
+    border: 5px solid;
+    border-color: goldenrod;
+    background-color: #7B3F00;
+    font-family: BlackChancery;
+    font-size: 23px;
+
+}
