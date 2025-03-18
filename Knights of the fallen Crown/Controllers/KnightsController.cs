@@ -18,11 +18,11 @@ namespace KnightsOfTheFallenCrown.Controllers
         private readonly IFileServices _fileServices;
 
 
-        public KnightsController(KnightsOfTheFallenCrownContext context, IKnightsServices knightsServices)
+        public KnightsController(KnightsOfTheFallenCrownContext context, IKnightsServices knightsServices, IFileServices fileServices)
         {
             _context = context;
             _knightsServices = knightsServices;
-            _fileServices = _fileServices;
+            _fileServices = fileServices;
         }
 
         [HttpGet]
@@ -60,9 +60,13 @@ namespace KnightsOfTheFallenCrown.Controllers
                 KnightLevel = 0,
                 KnightType = (Core.Dto.KnightTYPE)vm.KnightType,
                 KnightStatus = (Core.Dto.KnightStatus)vm.KnightStatus,
-                KnightDescription = vm.KnightDescription,
-               
-                CreatedAt = DateTime.Now,
+				PrimaryAttackName = vm.PrimaryAttackName,
+				PrimaryAttackPower = vm.PrimaryAttackPower,
+				SecondaryAttackName = vm.SecondaryAttackName,
+				SecondaryAttackPower = vm.SecondaryAttackPower,
+
+
+				CreatedAt = DateTime.Now,
                 UpdatedAt = DateTime.Now,
                 Files = vm.Files,
                 Image = vm.Image

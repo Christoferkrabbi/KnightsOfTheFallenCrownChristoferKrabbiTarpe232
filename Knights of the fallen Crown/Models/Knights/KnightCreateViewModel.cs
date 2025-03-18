@@ -17,9 +17,9 @@ namespace KnightsOfTheFallenCrown.Models.Knights
         public KnightPERK KnightPerk { get; set; }
 
 
-        public int PrimaryAttackName { get; set; }
+        public string PrimaryAttackName { get; set; }
         public int PrimaryAttackPower { get; set; }
-        public int SecondaryAttackName { get; set; }
+        public string SecondaryAttackName { get; set; }
         public int SecondaryAttackPower { get; set; }
         public DateTime KnightWasBorn { get; set; }
         public DateTime KnightHasDied { get; set; }
