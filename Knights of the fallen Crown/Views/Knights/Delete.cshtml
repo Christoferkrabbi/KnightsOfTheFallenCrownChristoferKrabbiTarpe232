@@ -1,4 +1,4 @@
-﻿﻿
+﻿﻿﻿
 @model KnightsOfTheFallenCrown.Models.Knights.KnightDeleteViewModel
 
 <h1> @Html.DisplayFor(model => model.KnightName) </h1>
@@ -15,12 +15,11 @@
             <label asp-for="KnightName" class="col-sm-2 col-form-label"></label>
             @Html.DisplayFor(model => model.KnightName)
         </div>
-        <div id="imagediv">
-            @foreach (var image in Model.Image)
-            {
-                <partial name="_Images" model="image" />
-            }
+        <div class="form-group row">
+            <label asp-for="KnightType" class="col-sm-2 col-form-label"></label>
+            @Html.DisplayFor(Model => Model.KnightType)
         </div>
+
 
         <div class="form-group row">
             <label asp-for="KnightHealth" class="col-sm-2 col-form-label"></label>
@@ -34,10 +33,6 @@
         <div class="form-group row">
             <label asp-for="KnightXP" class="col-sm-2 col-form-label"></label>
             @Html.DisplayFor(model => model.KnightXP)
-        </div>
-        <div class="form-group row">
-            <label asp-for="KnightXPNextLevel" class="col-sm-2 col-form-label"></label>
-            @Html.DisplayFor(model => model.KnightXPNextLevel)
         </div>
 
         <div class="form-group row">
@@ -55,22 +50,32 @@
         <div class="form-group row">
             <label asp-for="PrimaryAttackName" class="col-sm-2 col-form-label"></label>
             @Html.DisplayFor(model => model.PrimaryAttackName)
+        </div>
+        <div>
             <label asp-for="PrimaryAttackPower" class="col-sm-2 col-form-label"></label>
             @Html.DisplayFor(model => model.PrimaryAttackPower)
         </div>
         <div class="form-group row">
             <label asp-for="SecondaryAttackName" class="col-sm-2 col-form-label"></label>
             @Html.DisplayFor(model => model.SecondaryAttackName)
+        </div>
+        <div>
             <label asp-for="SecondaryAttackPower" class="col-sm-2 col-form-label"></label>
             @Html.DisplayFor(model => model.SecondaryAttackPower)
         </div>
-        
+        <div id="imagediv">
+            @foreach (var image in Model.Image)
+            {
+                <partial name="_Images" model="image" />
+            }
+        </div>
+
 
     </dl>
     <form asp-action="DeleteConfirmation">
         <input type="hidden" asp-for="ID" />
         <input type="submit" value="Delete" class="btn btn-danger" />
-        <a asp-action="Index" asp-controller="titans" class="btn btn-secondary">Index</a>
+        <a asp-action="Index" asp-controller="knights" class="btn btn-secondary">Index</a>
     </form>
 
 </div>

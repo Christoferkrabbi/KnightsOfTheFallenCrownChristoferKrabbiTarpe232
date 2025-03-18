@@ -4,13 +4,9 @@ namespace KnightsOfTheFallenCrown.Models.Knights
 {
 	public class KnightDetailsViewModel
 	{
-		public Guid ID { get; set; }
+		public Guid? ID { get; set; }
 		public string KnightName { get; set; }
 		public string? KnightDescription { get; set; }
-		public string PrimaryAttackName { get; set; }
-		public int PrimaryAttackPower { get; set; }
-		public string SecondaryAttackName { get; set; }
-		public int SecondaryAttackPower { get; set; }
 		public int KnightHealth { get; set; }
 		public int KnightLevel { get; set; }
 		public int KnightXP { get; set; }
@@ -21,12 +17,15 @@ namespace KnightsOfTheFallenCrown.Models.Knights
 		public KnightPERK KnightPerk { get; set; }
 
 
+		public string? PrimaryAttackName { get; set; }
+		public int PrimaryAttackPower { get; set; }
+		public string? SecondaryAttackName { get; set; }
+		public int SecondaryAttackPower { get; set; }
+		public DateTime KnightWasBorn { get; set; }
+		public DateTime KnightHasDied { get; set; }
 
 		public List<IFormFile> Files { get; set; }
-		// public IEnumerable<FileToDatabase> Image { get; set; } = new List<FileToDatabase>();
 		public List<KnightImageViewModel> Image { get; set; } = new List<KnightImageViewModel>();
-
-
 
 		public DateTime CreatedAt { get; set; }
 		public DateTime UpdatedAt { get; set; }

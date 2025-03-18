@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace KnightsOfTheFallenCrown.Core.ServicesInterface
 {
-    public interface IKnightsServices
-    {
-        Task<Knight>DetailsAsync (Guid id);
-        Task<Knight> Create(KnightDto dto);
-        Task<Knight> Update (KnightDto dto);
-        Task<Knight> Delete(Guid id);
-    }
+	public interface IKnightsServices
+	{
+		Task<Knight> DetailsAsync(Guid id);
+		Task<Knight> Create(KnightDto dto);
+		Task<Knight> Update(KnightDto dto);
+		Task<Knight> Delete(Guid id);
+	}
 }
