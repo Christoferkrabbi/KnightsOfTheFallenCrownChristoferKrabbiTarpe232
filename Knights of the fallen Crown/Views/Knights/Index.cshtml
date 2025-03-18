@@ -62,11 +62,25 @@
                 @foreach (var knight in Model)
                 {
                 <td>
-                    <table>
-                        <tr class="yellow"><td colspan="2">@knight.KnightName</td></tr>
+                    <table class="medievalTable">
+                        <tr class="yellow">
+                            <td colspan="2">@knight.KnightName</td>
+                        </tr>
 
-
-                        <tr class="gTZRG"><td colspan="2"><img width="256" src="~/lib/gameasset/Image/premadeknights/KnightIcon.png" /></td></tr>
+                        <tr>
+                            <td colspan="2">
+                                @* <img width="256" src="~/lib/gameasset/Image/premadeknights/KnightIcon.png" /> *@
+                                <!-- Dynamically render each knight's unique image -->
+                                    @if (knight.Image != null && knight.Image.Any())
+                                    {
+                                    <img width="256" src="data:image/png;base64,@Convert.ToBase64String(knight.Image.FirstOrDefault()?.ImageData)" alt="@knight.KnightName" />
+                                    }
+                                    else
+                                    {
+                                    <img width="256" src="~/lib/gameasset/Image/premadeknights/KnightIcon.png" alt="Default Knight Icon" />
+                                    }
+                            </td>
+                        </tr>
                         <tr class="yellow">
                             <td>@knight.KnightType</td>
                             <td>@knight.KnightLevel</td>
@@ -75,11 +89,11 @@
                     </table>
                 </td>
                 <td>
-                    <a asp-action="details" asp-controller="knights" asp-route-id="@knight.ID" class="btn btn-info">Knight Details</a>
+                    <a asp-action="details" asp-controller="knights" asp-route-id="@knight.ID" class="btn btn-info medievalButton">Knight Details</a>
                     <br />
-                    <a asp-action="update" asp-controller="knights" asp-route-id="@knight.ID" class="btn btn-info">Modify this knight</a>
+                    <a asp-action="update" asp-controller="knights" asp-route-id="@knight.ID" class="btn btn-info medievalButton">Modify this knight</a>
                     <br />
-                    <a asp-action="delete" asp-controller="knights" asp-route-id="@knight.ID" class="btn btn-info">Delete this knight</a>
+                    <a asp-action="delete" asp-controller="knights" asp-route-id="@knight.ID" class="btn btn-info medievalButton">Delete this knight</a>
                 </td>
                     rowNumber++;
                 }
