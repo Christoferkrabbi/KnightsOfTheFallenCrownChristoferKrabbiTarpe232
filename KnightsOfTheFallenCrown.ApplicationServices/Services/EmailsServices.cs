@@ -19,9 +19,9 @@ namespace KnightsOfTheFallenCrown.ApplicationServices.Services
 		{
 			var email = new MimeMessage();
 
-			_configuration.GetSection("EmailUserName").Value = "knightsofthefallencrown";
+			_configuration.GetSection("EmailUserName").Value = "knightsofthefallencrown2";
 			_configuration.GetSection("EmailHost").Value = "smtp.gmail.com";
-			_configuration.GetSection("EmailPassword").Value = "mcon wheh qlvd rxpk";
+			_configuration.GetSection("EmailPassword").Value = "olcd bpff lpja mvdl";
 
 
 			email.From.Add(MailboxAddress.Parse(_configuration.GetSection("EmailUserName").Value));
@@ -46,9 +46,9 @@ namespace KnightsOfTheFallenCrown.ApplicationServices.Services
 			dto.Token = token;
 			var email = new MimeMessage();
 
-			_configuration.GetSection("EmailUserName").Value = "knightsofthefallencrown";
+			_configuration.GetSection("EmailUserName").Value = "knightsofthefallencrown2";
 			_configuration.GetSection("EmailHost").Value = "smtp.gmail.com";
-			_configuration.GetSection("EmailPassword").Value = "mcon wheh qlvd rxpk";
+			_configuration.GetSection("EmailPassword").Value = "olcd bpff lpja mvdl";
 
 
 			email.From.Add(MailboxAddress.Parse(_configuration.GetSection("EmailUserName").Value));
