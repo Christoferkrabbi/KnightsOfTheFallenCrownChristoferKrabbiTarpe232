@@ -13,7 +13,7 @@ using System.Text;
 using System.Threading.Tasks;
 namespace KnightsOfTheFallenCrown.ApplicationServices.Services
 {
-	public class BattlefieldsServices
+	public class BattlefieldsServices : IBattlefieldsServices
 	{
 		
         private readonly KnightsOfTheFallenCrownContext _context;

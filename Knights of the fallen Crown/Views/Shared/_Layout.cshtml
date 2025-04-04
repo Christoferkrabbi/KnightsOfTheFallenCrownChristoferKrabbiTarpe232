@@ -1,7 +1,4 @@
-﻿@using Microsoft.AspNetCore.Identity
-@inject SignInManager<KnightsOfTheFallenCrown.Core.Domain.ApplicationUser> signInManager;
-
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -10,6 +7,8 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/KnightsOfTheFallenCrown.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/gameStyle.css" />
+    <link rel="stylesheet" href="~/css/gameStyle.css" asp-append-version="true" />
 </head>
 <body>
     <header>
@@ -28,6 +27,10 @@
 
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Knights" asp-action="Index">My Knights</a>
+                        </li>
+                        
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Battlefields" asp-action="Index">My Battlefields</a>
                         </li>
                     </ul>
                 </div>

@@ -43,7 +43,7 @@ namespace KnightsOfTheFallenCrown.Core.Dto
         public int SecondaryAttackName { get; set; }
         public int PSecondaryAttackPower { get; set; }
         public DateTime KnightWasBorn { get; set; }
-        public DateTime KnightHasDied { get; set; }
+        public DateTime? KnightHasDied { get; set; }
 
        
 

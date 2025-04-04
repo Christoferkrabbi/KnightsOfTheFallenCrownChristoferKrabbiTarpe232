@@ -22,7 +22,7 @@ namespace KnightsOfTheFallenCrown.Models.Knights
         public int SecondaryAttackName { get; set; }
         public int SecondaryAttackPower { get; set; }
         public DateTime KnightWasBorn { get; set; }
-        public DateTime KnightHasDied { get; set; }
+        public DateTime? KnightHasDied { get; set; }
 
         public List<IFormFile> Files { get; set; }
         public List<KnightImageViewModel> Image { get; set; } = new List<KnightImageViewModel>();

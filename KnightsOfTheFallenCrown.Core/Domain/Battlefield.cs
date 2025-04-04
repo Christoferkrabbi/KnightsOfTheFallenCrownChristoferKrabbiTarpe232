@@ -37,7 +37,7 @@ namespace KnightsOfTheFallenCrown.Core.Domain
 		public string BattlefieldName { get; set; }
 		public BattlefieldType BattlefieldType { get; set; }
 		public KnightTYPE? EnvironmentBoost {  get; set; }
-		public string BattlefieldDescription {  get; set; }
+		public string? BattlefieldDescription {  get; set; }
 		public int Settlements { get; set; }
 		public KardashevScale TechnicalLevel { get; set; }
 	//	public Lord? LordWhoDominatesThisBattlefield { get; set; }
