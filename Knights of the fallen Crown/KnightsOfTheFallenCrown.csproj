@@ -25,6 +25,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="wwwroot\lib\gameasset\Image\Battlefields\" />
     <Folder Include="wwwroot\lib\gameasset\Image\Site\" />
   </ItemGroup>
 
