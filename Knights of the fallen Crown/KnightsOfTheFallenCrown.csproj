@@ -26,4 +26,8 @@
     <ProjectReference Include="..\KnightsOfTheFallenCrown.Data\KnightsOfTheFallenCrown.Data.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\lib\gameasset\fonts\" />
+  </ItemGroup>
+
 </Project>
