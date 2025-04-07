@@ -128,4 +128,16 @@ body {
     background-color: #7B3F00;
     font-family: BlackChancery;
     font-size: 23px;
+    color: gold;
+}
+.medievalBattlefieldTb {
+    border: 4px solid;
+    /*border-color: saddlebrown*/
+    /*border-color: #966919*/
+    border-color: goldenrod;
+    /*background-color: #5C4033;*/
+    background-color: #7B3F00;
+    font-family: BlackChancery;
+    font-size: 25px;
+    margin-bottom: 10px;
 }

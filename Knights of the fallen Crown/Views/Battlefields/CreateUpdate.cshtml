@@ -1,12 +1,13 @@
 ﻿﻿@using KnightsOfTheFallenCrown.Core.Domain
+@using static KnightsOfTheFallenCrown.Core.Domain.Continents
 @model KnightsOfTheFallenCrown.Models.Battlefields.BattlefieldCreateUpdateViewModel
 @if (Model.ID.HasValue)
 {
-    <h1 class="gTZRG">Edit Battlefield</h1>
+    <h1 class="medievalTitleFontOnly">Edit Battlefield</h1>
 }
 else
 {
-    <h1 class="gTZRG">Find a New Battlefield</h1>
+    <h1 class="medievalTitleFontOnly">Find a New Battlefield</h1>
 }
 <div class="gTZRG">
     <form method="post" enctype="multipart/form-data">
@@ -39,6 +40,16 @@ else
         </div>
 
         <div class="form-group-row">
+            <label asp-for="ContinentID" class="col-sm-2 col-form-label"></label>
+            <div class="col-sm-10">
+                <select asp-for="ContinentID" asp-items="Html.GetEnumSelectList<Continent>()">
+                    <option value="">Select continent</option>
+                </select>
+                <span asp-validation-for="ContinentID"></span>
+            </div>
+        </div>
+
+        <div class="form-group-row">
             <label asp-for="EnvironmentBoost" class="col-sm-2 col-form-label"></label>
             <div class="col-sm-10">
                 <select asp-for=EnvironmentBoost asp-items="Html.GetEnumSelectList<KnightTYPE>()">
@@ -67,7 +78,7 @@ else
             <input asp-action="Update"
                    asp-controller="Battlefields"
                    type="submit"
-                   class="btn btn-primary"
+                   class="btn medievalButton"
                    value="Save Changes" />
         }
         else
@@ -75,11 +86,11 @@ else
             <input asp-action="Create"
                    asp-controller="Battlefields"
                    type="submit"
-                   class="btn btn-primary"
+                   class="btn medievalButton"
                    value="Make this Battlefield" />
         }
 
-        <a asp-action="index" class="btn btn-primary">Cancel</a>
+        <a asp-action="index" class="btn medievalButton">Cancel</a>
 
     </form>
 </div>

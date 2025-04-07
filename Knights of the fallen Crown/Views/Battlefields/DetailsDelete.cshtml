@@ -62,16 +62,16 @@ else
                     <td>
                         @if (ViewData["RequestedView"] == "Details")
                         {
-                            <a asp-action="index" class="btn btn-primary">Back</a>
+                            <a asp-action="index" class="btn medievalButton">Back</a>
                         }
                         else
                         {
                             <input asp-action="DeleteConfirmation"
                                    asp-controller="Battlefields"
                                    type="submit"
-                                   class="btn btn-primary"
-                                   value="Thanos snap" />
-                            <a asp-action="index" class="btn btn-primary">Cancel</a>
+                                   class="btn medievalButton"
+                                   value="Begone!" />
+                            <a asp-action="index" class="btn medievalButton">Cancel</a>
                         }
                     </td>
                 </tr>
