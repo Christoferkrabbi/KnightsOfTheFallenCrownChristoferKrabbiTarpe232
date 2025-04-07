@@ -37,16 +37,7 @@ namespace KnightsOfTheFallenCrown.Controllers
 					Settlements = x.Settlements,
 					TechnicalLevel = x.TechnicalLevel,
 					ContinentID = (Guid)x.ContinentID,
-					//Image = (List<AstralBodyIndexViewModel>)_context.FilesToDatabase
-					//   .Where(t => t.TitanID == x.ID)
-					//   .Select(z => new AstralBodyIndexViewModel
-					//   {
-					//       TitanID = z.ID,
-					//       ImageID = z.ID,
-					//       ImageData = z.ImageData,
-					//       ImageTitle = z.ImageTitle,
-					//       Image = string.Format("data:image/gif;base64,{0}", Convert.ToBase64String(z.ImageData))
-					//   })
+					
 				});
 			return View(allBattlefields);
 		}

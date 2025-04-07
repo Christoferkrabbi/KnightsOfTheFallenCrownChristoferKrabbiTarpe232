@@ -73,7 +73,8 @@ body {
     /*background-color: #5C4033;*/
     background-color: #7B3F00;
     font-family: BlackChancery;
-    font-size: 20px
+    font-size: 20px;
+    color:gold;
 }
 
 .imageBorder {
@@ -89,6 +90,7 @@ body {
     background-color: #7B3F00;
     font-family: BlackChancery;
     font-size: 23px;
+    color:gold
 }
 
 body {

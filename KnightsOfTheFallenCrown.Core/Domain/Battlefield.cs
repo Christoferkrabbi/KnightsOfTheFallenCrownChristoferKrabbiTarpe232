@@ -17,10 +17,8 @@ namespace KnightsOfTheFallenCrown.Core.Domain
 		Haunted_Ruins,
 		Enchanted_Forest,
 		Shadow_Realm,
-		Fiery_Wasteland,
 		Frozen_Tundra,
 		Stormy_Cliffs,
-		Flooded_Marshlands,
 		Wrecked_Battlefield,
 		Nomad_Camp_Raid,
 		Underground_Catacombs,
@@ -46,5 +44,6 @@ namespace KnightsOfTheFallenCrown.Core.Domain
 		public DateTime CreatedAt { get; set; }
 		public DateTime ModifiedAt { get; set; }
 
+		
 	}
 }

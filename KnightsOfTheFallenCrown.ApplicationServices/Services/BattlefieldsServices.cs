@@ -15,8 +15,8 @@ namespace KnightsOfTheFallenCrown.ApplicationServices.Services
 {
 	public class BattlefieldsServices : IBattlefieldsServices
 	{
-		
-        private readonly KnightsOfTheFallenCrownContext _context;
+
+		private readonly KnightsOfTheFallenCrownContext _context;
 		private readonly IFileServices _fileServices;
 
 		public BattlefieldsServices(KnightsOfTheFallenCrownContext context, IFileServices fileServices)
