@@ -11,7 +11,9 @@ namespace KnightsOfTheFallenCrown.Core.ServicesInterface
     public interface IFileServices
     {
         void UploadFilesToDatabase(KnightDto dto, Knight domain);
-		void UploadFilesToDatabase(BattlefieldDto dto, Battlefield domain);
+
+		Task UploadFilesToDatabase(BattlefieldDto dto, Battlefield domain, BattlefieldType battlefieldType);
 		Task<FileToDatabase> RemoveImageFromDatabase(FileToDatabaseDto dto);
-    }
+		
+	}
 }

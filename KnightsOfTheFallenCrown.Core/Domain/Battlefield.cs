@@ -9,20 +9,20 @@ namespace KnightsOfTheFallenCrown.Core.Domain
 {
 	public enum BattlefieldType
 	{
-		Open_Plains,
-		Castle_Siege,
-		Village_Skirmish,
-		Bridge_Battle,
-		Cursed_Graveyard,
-		Haunted_Ruins,
-		Enchanted_Forest,
-		Shadow_Realm,
-		Frozen_Tundra,
-		Stormy_Cliffs,
-		Wrecked_Battlefield,
-		Nomad_Camp_Raid,
-		Underground_Catacombs,
-		Sky_Citadel
+		OpenPlains,
+		CastleSiege,
+		VillageSkirmish,
+		BridgeBattle,
+		CursedGraveyard,
+		HauntedRuins,
+		EnchantedForest,
+		ShadowRealm,
+		FrozenTundra,
+		StormyCliffs,
+		WreckedBattlefield,
+		NomadCampRaid,
+		UndergroundCatacombs,
+		SkyCitadel
 
 	}
 	public enum KardashevScale

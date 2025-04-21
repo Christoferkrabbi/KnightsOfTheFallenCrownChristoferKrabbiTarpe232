@@ -44,7 +44,7 @@ namespace KnightsOfTheFallenCrown.ApplicationServices.Services
                 }
             }
         }
-		public void UploadFilesToDatabase(BattlefieldDto dto, Battlefield domain)
+		public async Task UploadFilesToDatabase(BattlefieldDto dto, Battlefield battlefield, BattlefieldType battlefieldType)
 		{
 			if (dto.Files != null && dto.Files.Count > 0)
 			{
@@ -52,39 +52,61 @@ namespace KnightsOfTheFallenCrown.ApplicationServices.Services
 				{
 					using (var target = new MemoryStream())
 					{
-						FileToDatabase files = new FileToDatabase()
+						await image.CopyToAsync(target);
+
+						var file = new FileToDatabase()
 						{
 							ID = Guid.NewGuid(),
-							ImageTitle = image.FileName,
-							BattlefieldID = domain.ID
+							ImageTitle = $"{battlefieldType}_{Guid.NewGuid()}_{Path.GetFileNameWithoutExtension(image.FileName)}",
+							BattlefieldID = battlefield.ID,
+							BattlefieldType = battlefieldType,
+							ImageData = target.ToArray(),
+							
+							ImageSource = GetImageSource(battlefieldType)
 						};
 
-						image.CopyTo(target);
-						files.ImageData = target.ToArray();
-						_context.FilesToDatabase.Add(files);
-
+						await _context.FilesToDatabase.AddAsync(file);
 					}
 				}
+				await _context.SaveChangesAsync();
 			}
 		}
+		private string GetImageSource(BattlefieldType type)
+		{
+			return type switch
+			{
+				BattlefieldType.OpenPlains => "./lib/gameasset/Image/Battlefields/OpenPlains.jpg",
+				BattlefieldType.CastleSiege => "/images/CastleSiege.jpg",
+				BattlefieldType.CursedGraveyard => "/images/CursedGraveyard.jpg",
+				//pooleli
+				
+				_ => "/images/battlefield-default.jpg"
+			};
+		}
 		public async Task<FileToDatabase> RemoveImageFromDatabase(FileToDatabaseDto dto)
-        {
-            var imageID = await _context.FilesToDatabase
-                .FirstOrDefaultAsync(x => x.ID == dto.ID);
-            var filePath = _webHost.ContentRootPath + "\\multipleFileUpload\\" + imageID.ImageData;
-            if (File.Exists(filePath))
-            {
-                File.Delete(filePath);
-            }
+		{
+			var image = await _context.FilesToDatabase
+				.FirstOrDefaultAsync(x => x.ID == dto.ID);
 
-            _context.FilesToDatabase.Remove(imageID);
-            await _context.SaveChangesAsync();
+			if (image == null) return null;
 
-            return null;
+			// Optional: Add type-specific deletion logic if needed
+			if (image.BattlefieldType.HasValue)
+			{
+				// Example: Special handling for certain types
+				if (image.BattlefieldType == BattlefieldType.CursedGraveyard)
+				{
+					// Additional cleanup for cursed graveyard images
+				}
+			}
 
-        }
+			_context.FilesToDatabase.Remove(image);
+			await _context.SaveChangesAsync();
+			return image;
+		}
 
-    }
+
+	}
 
 
 }

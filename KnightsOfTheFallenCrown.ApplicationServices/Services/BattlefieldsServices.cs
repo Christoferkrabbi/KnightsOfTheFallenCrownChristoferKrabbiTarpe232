@@ -49,8 +49,8 @@ namespace KnightsOfTheFallenCrown.ApplicationServices.Services
 			else if (190 >= settlementcount && settlementcount >= 150)
 			{ newBattlefield.TechnicalLevel = KardashevScale.Type2; }
 			else { newBattlefield.TechnicalLevel = KardashevScale.Type1; }
-			//no titan owns a planet that has been created by admin
-			//and no planet is assigned to a solar system in the planet creation view
+			//no knight/lord owns a battlefield that has been created by admin
+			
 
 			// set by admin
 			newBattlefield.BattlefieldName = dto.BattlefieldName;
@@ -64,8 +64,8 @@ namespace KnightsOfTheFallenCrown.ApplicationServices.Services
 
 			if (dto.Files != null)
 			{
-				_fileServices.UploadFilesToDatabase(
-					dto, newBattlefield);
+				_fileServices.UploadFilesToDatabase(dto, newBattlefield, dto.BattlefieldType);
+				
 			}
 
 			await _context.Battlefields.AddAsync(newBattlefield);
@@ -91,7 +91,7 @@ namespace KnightsOfTheFallenCrown.ApplicationServices.Services
 
 			if (dto.Files != null)
 			{
-				_fileServices.UploadFilesToDatabase(dto, BattlefieldChanged);
+				await _fileServices.UploadFilesToDatabase(dto, BattlefieldChanged, dto.BattlefieldType);
 			}
 
 			_context.Battlefields.Update(BattlefieldChanged);

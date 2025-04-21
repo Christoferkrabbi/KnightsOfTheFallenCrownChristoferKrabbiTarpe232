@@ -55,7 +55,7 @@
         </div>
 
         <!-- Image Preview Section -->
-        <div class="form-group-row">
+       @*  <div class="form-group-row">
             <label class="col-sm-2 col-form-label">Preview</label>
             <div class="col-sm-10">
                 <div class="card" style="width: 100%; max-width: 500px;">
@@ -65,11 +65,26 @@
                     </div>
                 </div>
             </div>
+        </div> *@
+
+        <div class="form-group-row mt-3">
+            <label class="col-sm-2 col-form-label">Battlefield Preview</label>
+            <div class="col-sm-10">
+                <div class="card mb-3" style="max-width: 500px;">
+                    <img id="battlefieldTypePreview" src="/images/battlefield-default.jpg"
+                         class="card-img-top" alt="Battlefield type preview">
+                    <div class="card-body">
+                        <p class="card-text" id="battlefieldTypeDescription">
+                            Select a battlefield type to see preview
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
 
               
 
-       @*  <div class="form-group-row">
+        <div class="form-group-row">
             <label asp-for="Files" class="col-sm-2 col-form-label"></label>
             <div class="col-sm-5">
                 <div class="custom-file">
@@ -80,20 +95,8 @@
                 </div>
             </div>
 
-        </div> *@
-                <!-- Image Preview Section -->
-                <div class="form-group-row">
-                    <label class="col-sm-2 col-form-label">Preview</label>
-                    <div class="col-sm-10">
-                        <div class="card" style="width: 100%; max-width: 500px;">
-                            <img id="battlefieldImagePreview" src="" class="card-img-top" alt="Battlefield preview" style="display: none;">
-                            <div class="card-body">
-                                <p class="card-text" id="battlefieldDescriptionText">Select a battlefield type to see preview</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
+        </div>
+ 
         @if (Model.ID.HasValue)
         {
             <input asp-action="Update"
@@ -117,8 +120,24 @@
 </div>
 
 
-@* @section Scripts {
-    <script>
+
+
+@* <div class="form-group">
+    <img id="battlefieldImagePreview" src="" alt="Battlefield preview"
+         style="max-width: 500px; display: none;" class="img-fluid mt-2" />
+</div> *@
+
+        @section Scripts {
+
+    @foreach (var img in Model.Image)
+    {
+        <div class="image-container @img.BattlefieldType?.ToString().ToLower()">
+            <img src="@img.Image" alt="@img.ImageTitle" />
+            <span class="badge bg-secondary">@img.BattlefieldType</span>
+        </div>
+    }
+
+             <script>
         $(document).ready(function () {
             $('.custom-file-input').on("change", function () {
                 var fileLabel = $(this).next('.custom-file-input');
@@ -131,35 +150,8 @@
                 }
             });
         });
-    </script>
-} *@
 
-<div class="form-group">
-    <img id="battlefieldImagePreview" src="" alt="Battlefield preview"
-         style="max-width: 500px; display: none;" class="img-fluid mt-2" />
-</div>
-
-        @section Scripts {
-            <script>
-                // Mapping of BattlefieldType to image paths
-                const battlefieldImages = {
-                    'Open_Plains': '/Images/Battlefields/OpenPlains.jpg',
-                    'Castle_Siege': '/Images/Battlefields/CastleSiege.jpg',
-                    'Village_Skirmish': '/Images/Battlefields/VillageSkirmish.jpg',
-                    'Bridge_Battle': '/Images/Battlefields/BridgeBattle.jpg',
-                    'Cursed_Graveyard': '/Images/Battlefields/CursedGraveyard.jpg',
-                    'Haunted_Ruins': '/Images/Battlefields/HauntedRuins.jpg',
-                    'Enchanted_Forest': '/Images/Battlefields/EnchantedForest.jpg',
-                    'Shadow_Realm': '/Images/Battlefields/ShadowRealm.jpg',
-                    'Frozen_Tundra': '/Images/Battlefields/FrozenTundra.jpg',
-                    'Stormy_Cliffs': '/Images/Battlefields/StormyCliff.jpg',
-                    'Wrecked_Battlefield': '/Images/Battlefields/WreckedBattlefield.jpg',
-                    'Nomad_Camp_Raid': '/Images/Battlefields/NomadCampRaid.jpg',
-                    'Underground_Catacombs': '/Images/Battlefields/UndergroundCatacombs.jpg',
-                    'Sky_Citadel': '/Images/Battlefields/SkyCitadel.jpg'
-                };
-
-                // Descriptions for each battlefield type
+           
                 const battlefieldDescriptions = {
                     'Open_Plains': 'Vast open fields ideal for cavalry charges and large-scale battles.',
                     'Castle_Siege': 'Fortified castle walls with defensive positions and siege opportunities.',
@@ -176,36 +168,45 @@
                     'Underground_Catacombs': 'Dark tunnels with limited visibility and tight spaces.',
                     'Sky_Citadel': 'Floating fortress with deadly drops and altitude effects.'
                 };
+                  // Battlefield type change handler
+        document.getElementById('battlefieldTypeSelect').addEventListener('change', function() {
+            const type = this.value;
+            const previewImg = document.getElementById('battlefieldTypePreview');
+            const description = document.getElementById('battlefieldTypeDescription');
 
-                document.getElementById('battlefieldTypeSelect').addEventListener('change', function() {
-                    const selectedValue = this.value;
-                    const preview = document.getElementById('battlefieldImagePreview');
-                    const description = document.getElementById('battlefieldDescriptionText');
+            if (type) {
+                // Update the preview image path to match your GetImageSource() method
+                previewImg.src = `/images/${type.replace(/_/g, '')}.jpg`;
+                description.textContent = typeDescriptions[type] || typeDescriptions['_default'];
+            } else {
+                previewImg.src = '/images/battlefield-default.jpg';
+                description.textContent = 'Select a battlefield type to see preview';
+            }
+        });
 
-                    if (selectedValue && battlefieldImages[selectedValue]) {
-                        preview.src = battlefieldImages[selectedValue];
-                        preview.style.display = 'block';
-                        description.textContent = battlefieldDescriptions[selectedValue] || 'No description available.';
-                    } else {
-                        preview.style.display = 'none';
-                        description.textContent = 'Select a battlefield type to see preview';
-                    }
-                });
+        // File upload preview handler
+        document.querySelector('input[type="file"]').addEventListener('change', function(e) {
+            const container = document.getElementById('uploadPreviews');
+            container.innerHTML = '';
 
-                // Initialize preview if editing an existing battlefield
-                @if (Model.BattlefieldType != null)
-                {
-                    <text>
-                        document.addEventListener('DOMContentLoaded', function() {
-                            const initialType = '@Model.BattlefieldType.ToString()';
-                            if (initialType && battlefieldImages[initialType]) {
-                                document.getElementById('battlefieldImagePreview').src = battlefieldImages[initialType];
-                                document.getElementById('battlefieldImagePreview').style.display = 'block';
-                                document.getElementById('battlefieldDescriptionText').textContent =
-                                    battlefieldDescriptions[initialType] || 'No description available.';
-                            }
-                        });
-                    </text>
-                }
-            </script>
-        }
+            Array.from(e.target.files).forEach(file => {
+                if (!file.type.startsWith('image/')) return;
+
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const preview = `
+                        <div class="card" style="width: 150px;">
+                            <img src="${e.target.result}" class="card-img-top"
+                                 alt="Preview" style="height: 100px; object-fit: cover;">
+                            <div class="card-body p-2">
+                                <small class="d-block text-truncate">${file.name}</small>
+                                <small class="text-muted">${(file.size/1024).toFixed(1)}KB</small>
+                            </div>
+                        </div>`;
+                    container.insertAdjacentHTML('beforeend', preview);
+                };
+                reader.readAsDataURL(file);
+            });
+        });
+    </script>
+}

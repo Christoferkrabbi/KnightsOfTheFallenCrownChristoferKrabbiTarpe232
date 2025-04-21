@@ -1,4 +1,6 @@
-﻿namespace KnightsOfTheFallenCrown.Models.Battlefields
+﻿using KnightsOfTheFallenCrown.Core.Domain;
+
+namespace KnightsOfTheFallenCrown.Models.Battlefields
 {
 	public class BattlefieldImageViewModel
 	{
@@ -7,5 +9,6 @@
 		public byte[] ImageData { get; set; }
 		public string Image { get; set; }
 		public Guid? BattlefieldID { get; set; }
+		public BattlefieldType? BattlefieldType { get; set; }
 	}
 }

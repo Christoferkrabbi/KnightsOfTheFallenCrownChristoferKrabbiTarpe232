@@ -18,17 +18,8 @@ else
             <thead>
                 <tr>
                     <th rowspan="5">
-                        @foreach (var image in Model.Image)
-                        {
-                            if (image.ImageTitle == "LongViewAnimated.gif" && ViewData["IsAnimated"] == "true")
-                            {
-                                <partial name="_Images" model="image" />                                
-                            }
-                            if (image.ImageTitle == "LongViewStatic.png" && ViewData["IsAnimated"] == "false")
-                            {
-                                <partial name="_Images" model="image" />
-                            }
-                        }
+                       
+
                     </th>
                     <th>@Model.BattlefieldName</th>
                 </tr>
@@ -50,15 +41,15 @@ else
                     <td colspan="2">@Model.BattlefieldDescription</td>
                 </tr>
                 <tr>
-                    <td>currentowner</td>
+                    <td>Current owner: </td>
                     <td>@Model.LordWhoDominatesThisBattlefield</td>
                 </tr>
                 <tr>
-                    <td>whereis</td>
+                    <td>Continent: </td>
                     <td>@Model.ContinentID</td>
                 </tr>
                 <tr>
-                    <td>actions</td>
+                    <td>actions: </td>
                     <td>
                         @if (ViewData["RequestedView"] == "Details")
                         {
