@@ -105,7 +105,10 @@ namespace KnightsOfTheFallenCrown.ApplicationServices.Services
 			return image;
 		}
 
-
+		Task IFileServices.GetImageSource(BattlefieldDto dto, Battlefield domain, BattlefieldType battlefieldType)
+		{
+			throw new NotImplementedException();
+		}
 	}
 
 

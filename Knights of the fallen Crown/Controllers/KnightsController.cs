@@ -18,7 +18,8 @@ namespace KnightsOfTheFallenCrown.Controllers
         private readonly IFileServices _fileServices;
 
 
-        public KnightsController(KnightsOfTheFallenCrownContext context, IKnightsServices knightsServices)
+        public KnightsController(KnightsOfTheFallenCrownContext context, 
+            IKnightsServices knightsServices)
         {
             _context = context;
             _knightsServices = knightsServices;

@@ -14,6 +14,7 @@ namespace KnightsOfTheFallenCrown.Core.ServicesInterface
 
 		Task UploadFilesToDatabase(BattlefieldDto dto, Battlefield domain, BattlefieldType battlefieldType);
 		Task<FileToDatabase> RemoveImageFromDatabase(FileToDatabaseDto dto);
-		
+
+		Task GetImageSource(BattlefieldDto dto, Battlefield domain, BattlefieldType battlefieldType);
 	}
 }

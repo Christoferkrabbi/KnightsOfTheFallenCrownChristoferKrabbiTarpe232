@@ -91,7 +91,7 @@ namespace KnightsOfTheFallenCrown.ApplicationServices.Services
 
 			if (dto.Files != null)
 			{
-				await _fileServices.UploadFilesToDatabase(dto, BattlefieldChanged, dto.BattlefieldType);
+				await _fileServices.GetImageSource(dto, BattlefieldChanged, dto.BattlefieldType);
 			}
 
 			_context.Battlefields.Update(BattlefieldChanged);
