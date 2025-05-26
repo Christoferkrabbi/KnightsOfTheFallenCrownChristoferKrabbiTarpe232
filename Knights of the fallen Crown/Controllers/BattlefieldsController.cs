@@ -35,7 +35,7 @@ namespace KnightsOfTheFallenCrown.Controllers
 					BattlefieldType = x.BattlefieldType,
 					EnvironmentBoost = (Models.Knights.KnightTYPE)x.EnvironmentBoost,
 					Settlements = x.Settlements,
-					TechnicalLevel = x.TechnicalLevel,
+					DifficultyLevel = x.DifficultyLevel,
 					ContinentID = (Guid)x.ContinentID,
 					
 				});
@@ -60,9 +60,7 @@ namespace KnightsOfTheFallenCrown.Controllers
 				EnvironmentBoost = (Core.Dto.KnightTYPE)vm.EnvironmentBoost,
 				BattlefieldDescription = vm.BattlefieldDescription,
 				Settlements = vm.Settlements,
-				TechnicalLevel = vm.TechnicalLevel,
-				//no titan owns a planet that has been created by admin
-				//and no planet is assigned to a solar system in the planet creation view
+				DifficultyLevel = vm.DifficultyLevel,
 				CreatedAt = DateTime.Now,
 				ModifiedAt = DateTime.Now,
 				Files = vm.Files,
@@ -111,7 +109,7 @@ namespace KnightsOfTheFallenCrown.Controllers
 			vm.ID = dto.ID;
 			vm.BattlefieldName = dto.BattlefieldName;
 			vm.BattlefieldDescription = dto.BattlefieldDescription;
-			vm.TechnicalLevel = dto.TechnicalLevel;
+			vm.DifficultyLevel = dto.DifficultyLevel;
 			vm.Settlements = dto.Settlements;
 			vm.BattlefieldType = dto.BattlefieldType;
 			//vm.EnvironmentBoost = dto.EnvironmentBoost;
@@ -153,7 +151,7 @@ namespace KnightsOfTheFallenCrown.Controllers
 			vm.EnvironmentBoost = (Models.Knights.KnightTYPE)battlefieldToBeUpdated.EnvironmentBoost;
 			vm.BattlefieldDescription = battlefieldToBeUpdated.BattlefieldDescription;
 			vm.Settlements = battlefieldToBeUpdated.Settlements;
-			vm.TechnicalLevel = battlefieldToBeUpdated.TechnicalLevel;
+			vm.DifficultyLevel = battlefieldToBeUpdated.DifficultyLevel;
 			//vm.LordWhoDominatesThisBattlefield = battlefieldToBeUpdated.LordWhoDominatesThisBattlefield;
 			vm.ContinentID = battlefieldToBeUpdated.ContinentID;
 			vm.CreatedAt = battlefieldToBeUpdated.CreatedAt;
@@ -179,7 +177,7 @@ namespace KnightsOfTheFallenCrown.Controllers
 				EnvironmentBoost = (Core.Dto.KnightTYPE)vm.EnvironmentBoost,
 				BattlefieldDescription = vm.BattlefieldDescription,
 				Settlements = vm.Settlements,
-				TechnicalLevel = vm.TechnicalLevel,
+				DifficultyLevel = vm.DifficultyLevel,
 				//no titan owns a planet that has been created by admin
 				//and no planet is assigned to a solar system in the planet creation view
 				CreatedAt = DateTime.Now,
@@ -231,7 +229,7 @@ namespace KnightsOfTheFallenCrown.Controllers
 			vm.ID = deletableBattlefield.ID;
 			vm.BattlefieldName = deletableBattlefield.BattlefieldName;
 			vm.BattlefieldDescription = deletableBattlefield.BattlefieldDescription;
-			vm.TechnicalLevel = deletableBattlefield.TechnicalLevel;
+			vm.DifficultyLevel = deletableBattlefield.DifficultyLevel;
 			vm.Settlements = deletableBattlefield.Settlements;
 			vm.BattlefieldType = deletableBattlefield.BattlefieldType;
 			vm.EnvironmentBoost = (Models.Knights.KnightTYPE)deletableBattlefield.EnvironmentBoost;
@@ -253,6 +251,7 @@ namespace KnightsOfTheFallenCrown.Controllers
 			}
 			return RedirectToAction(nameof(Index));
 		}
+
 
 	}
 }

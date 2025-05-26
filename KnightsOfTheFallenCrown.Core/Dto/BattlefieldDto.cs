@@ -16,7 +16,7 @@ namespace KnightsOfTheFallenCrown.Core.Dto
 		public KnightTYPE EnvironmentBoost { get; set; }
 		public string BattlefieldDescription { get; set; }
 		public int Settlements { get; set; }
-		public KardashevScale TechnicalLevel { get; set; }
+		public Difficulty DifficultyLevel { get; set; }
 	//	public Lord? LordWhoDominatesThisBattlefield { get; set; }
 		public Guid? ContinentID { get; set; }
 

@@ -41,15 +41,18 @@ namespace KnightsOfTheFallenCrown.ApplicationServices.Services
 
 			Battlefield newBattlefield = new();
 
-			// set by service on first creation
-			newBattlefield.ID = Guid.NewGuid();
-			newBattlefield.Settlements = settlementcount;
-			if (settlementcount >= 189)
-			{ newBattlefield.TechnicalLevel = KardashevScale.Type3; }
-			else if (190 >= settlementcount && settlementcount >= 150)
-			{ newBattlefield.TechnicalLevel = KardashevScale.Type2; }
-			else { newBattlefield.TechnicalLevel = KardashevScale.Type1; }
-			//no knight/lord owns a battlefield that has been created by admin
+			//// set by service on first creation
+			//newBattlefield.ID = Guid.NewGuid();
+			//newBattlefield.Settlements = settlementcount;
+			//if (settlementcount >= 189)
+			//{ newBattlefield.DifficultyLevel = Difficulty.Hard; }
+			//else if (190 >= settlementcount && settlementcount >= 150)
+			//{ newBattlefield.DifficultyLevel = Difficulty.Type2; }
+			//else { newBattlefield.TechnicalLevel = KardashevScale.Type1; }
+			////no knight/lord owns a battlefield that has been created by admin
+			
+			///I Dont need it but ill keep it for reference
+
 			
 
 			// set by admin
@@ -83,7 +86,7 @@ namespace KnightsOfTheFallenCrown.ApplicationServices.Services
 			BattlefieldChanged.EnvironmentBoost = (Core.Domain.KnightTYPE)dto.EnvironmentBoost;
 			BattlefieldChanged.BattlefieldDescription = dto.BattlefieldDescription;
 			BattlefieldChanged.Settlements = dto.Settlements;
-			BattlefieldChanged.TechnicalLevel = dto.TechnicalLevel;
+			BattlefieldChanged.DifficultyLevel = dto.DifficultyLevel;
 			//BattlefieldChanged.LordWhoDominatesThisBattlefield = dto.LordWhoDominatesThisBattlefield;
 			BattlefieldChanged.ContinentID = dto.ContinentID;
 			BattlefieldChanged.CreatedAt = dto.CreatedAt;
